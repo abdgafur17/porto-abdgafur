@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abdul Gafur - Portfolio</title>
+  <title>Portofolio Abdul Gafur</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,172 +13,129 @@
       color: #333;
     }
     header {
-      background-color: #444;
-      color: white;
-      padding: 20px;
       text-align: center;
+      padding: 40px 20px 20px;
+      position: relative;
     }
-    .profile-pic {
-      width: 120px;
-      height: 120px;
+    .flag-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .flag-switcher img {
+      width: 32px;
+      height: 22px;
+      margin-left: 10px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
       border-radius: 50%;
       border: 4px solid #fff;
-      margin-top: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-    .language-switcher {
-      margin: 10px;
-      text-align: center;
-    }
-    .language-switcher button {
-      margin: 5px;
-      padding: 10px 20px;
-      cursor: pointer;
-      background-color: #555;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-    .container {
+    main {
       max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-    h2 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
-    }
-    .btn-cv {
-      display: block;
-      width: fit-content;
       margin: 20px auto;
-      padding: 10px 20px;
-      background-color: #008cba;
-      color: white;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    .download-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #3498db;
+      color: #fff;
       text-decoration: none;
       border-radius: 5px;
     }
-    .hidden { display: none; }
-  </style>
-  <script>
-    function switchLanguage(lang) {
-      document.querySelectorAll('.lang').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.' + lang).forEach(el => el.classList.remove('hidden'));
+    section {
+      margin-bottom: 30px;
     }
-    window.onload = () => switchLanguage('en');
-  </script>
+  </style>
 </head>
 <body>
   <header>
-    <img class="profile-pic" src="abd2.jpg" alt="Foto Profil Abdul Gafur">
+    <div class="flag-switcher">
+      <img src="https://flagcdn.com/w40/id.png" alt="Bahasa Indonesia" onclick="switchLang('id')">
+      <img src="https://flagcdn.com/w40/gb.png" alt="English" onclick="switchLang('en')">
+    </div>
+    <img src="abd2.jpg" alt="Foto Abdul Gafur" class="profile-img">
     <h1>Abdul Gafur</h1>
-    <p>ERP Executive | IT Specialist</p>
+    <a href="#" class="download-btn" id="cvLink">Download CV</a>
   </header>
 
-  <div class="language-switcher">
-    <button onclick="switchLanguage('en')">English</button>
-    <button onclick="switchLanguage('id')">Bahasa Indonesia</button>
-  </div>
+  <main>
+    <section id="summary">
+      <h2 data-en="Professional Summary" data-id="Ringkasan Profesional"></h2>
+      <p lang="en">IT professional with over 8 years of experience specializing in ERP system management, SCADA operations, IT infrastructure, and RFID administration. Proven track record in optimizing technology systems across various industries, including aviation, mining, and aquaculture. Currently serving as an ERP Executive at PT. JALA Akuakultur Lestari Alamku, managing and implementing Odoo ERP systems.</p>
+      <p lang="id">Profesional IT dengan pengalaman lebih dari 8 tahun di bidang manajemen sistem ERP, operasi SCADA, infrastruktur IT, dan administrasi RFID. Memiliki rekam jejak sukses dalam mengoptimalkan sistem teknologi di berbagai industri seperti penerbangan, pertambangan, dan akuakultur. Saat ini bekerja sebagai ERP Executive di PT. JALA Akuakultur Lestari Alamku untuk mengelola dan mengimplementasikan sistem Odoo ERP.</p>
+    </section>
 
-  <div class="container">
-    <a class="btn-cv" href="#">Download CV</a>
-
-    <div class="lang en">
-      <h2>Professional Summary</h2>
-      <p>
-        IT professional with over 8 years of experience specializing in ERP system management, SCADA operations, IT infrastructure, and RFID administration. Proven track record in optimizing technology systems across various industries, including aviation, mining, and aquaculture.
-        <br><br>
-        Adept at analyzing, managing, and enhancing operational efficiency through strategic technological solutions. Currently serving as an ERP Executive at PT. JALA Akuakultur Lestari Alamku, responsible for managing and implementing Odoo ERP systems to streamline business operations.
-      </p>
-
-      <h2>Professional Experience</h2>
+    <section id="experience">
+      <h2 data-en="Professional Experience" data-id="Pengalaman Kerja"></h2>
       <ul>
-        <li><strong>ERP Executive</strong> - PT. JALA Akuakultur Lestari Alamku (Feb 2024 – Present)</li>
-        <li><strong>IT Support Engineer</strong> - PT. INPARTS PRIMA SUKSES (Sep 2023 – Nov 2023)</li>
-        <li><strong>IT Mining Support Officer</strong> - PT. Cardig Aero Services Tbk (Sep 2021 – Sep 2023)</li>
-        <li><strong>IT Support Technician</strong> - PT. Pamora Coffee Indonesia (Jun 2021 – Aug 2021)</li>
-        <li><strong>Technical Infrastructure Engineer</strong> - PT. Infomedia Nusantara (May 2020 – Jun 2021)</li>
-        <li><strong>IT Support & RFID Admin</strong> - PT. Tripatra Engineers and Constructors (Aug 2019 – May 2020)</li>
-        <li><strong>Project Engineer</strong> - PT. Jaya Teknik Indonesia (Feb 2019 – Jun 2019)</li>
-        <li><strong>SCADA Operator</strong> - PT. Angkasa Pura Support / PT. Jaya Teknik Indonesia (Nov 2014 – Jan 2019)</li>
+        <li><strong>PT. JALA Akuakultur Lestari Alamku</strong> – ERP Executive (Feb 2024 – Sekarang)</li>
+        <li><strong>PT. INPARTS PRIMA SUKSES</strong> – IT Support Engineer (Sep 2023 – Nov 2023)</li>
+        <li><strong>PT. Cardig Aero Services Tbk</strong> – IT Mining Support Officer (Sep 2021 – Sep 2023)</li>
+        <li><strong>PT. Pamora Coffee Indonesia</strong> – IT Support Technician (Jun 2021 – Aug 2021)</li>
+        <li><strong>PT. Infomedia Nusantara / Maybank</strong> – Technical Infrastructure Engineer (May 2020 – Jun 2021)</li>
+        <li><strong>PT. Tripatra Engineers and Constructors</strong> – IT Support & RFID Admin (Aug 2019 – May 2020)</li>
+        <li><strong>PT. Jaya Teknik Indonesia</strong> – Project Engineer (Feb 2019 – Jun 2019)</li>
+        <li><strong>PT. Angkasa Pura Support / PT. Jaya Teknik Indonesia</strong> – SCADA Operator (Nov 2014 – Jan 2019)</li>
       </ul>
+    </section>
 
-      <h2>Odoo Projects</h2>
+    <section id="skills">
+      <h2 data-en="Technical Skills" data-id="Keahlian Teknis"></h2>
       <ul>
-        <li>
-          <strong>Helpdesk Implementation for Jala</strong><br>
-          Role: Implementor, Lead, Socialization<br>
-          Task: Analyze default Helpdesk module, redesign for Jala's team<br>
-          Result: All Odoo issues documented and SLA per ticket measurable
-        </li>
-        <li>
-          <strong>Approval Delegation</strong><br>
-          Role: Implementor and user education<br>
-          Task: Gather user requirements for managerial delegation<br>
-          Result: Managers can delegate approvals during absence
-        </li>
-        <li>
-          <strong>Product Input Management in Inventory Module</strong><br>
-          Role: Process designer, access control<br>
-          Task: Define role access and item entry flow through ERP Executive<br>
-          Result: Controlled and centralized item creation
-        </li>
-        <li>
-          <strong>Manufacturing Optimization</strong><br>
-          Role: Module implementation and process analysis<br>
-          Task: Map current process with Odoo Manufacturing module<br>
-          Result: Manufacturing process running and ready for development
-        </li>
+        <li><strong>Operating Systems:</strong> Windows 7, 10, 11</li>
+        <li><strong>Networking:</strong> LAN/WAN, IP CCTV</li>
+        <li><strong>Programming:</strong> PHP, MySQL</li>
+        <li><strong>Software:</strong> Odoo ERP, Adobe Photoshop, Microsoft Office</li>
+        <li><strong>Other Skills:</strong> Troubleshooting Hardware & Software, System Integration, RFID, SCADA</li>
       </ul>
-    </div>
+    </section>
 
-    <div class="lang id hidden">
-      <h2>Ringkasan Profesional</h2>
-      <p>
-        Profesional IT dengan pengalaman lebih dari 8 tahun di bidang manajemen sistem ERP, operasi SCADA, infrastruktur TI, dan administrasi RFID. Berhasil mengoptimalkan sistem teknologi di berbagai industri, termasuk penerbangan, pertambangan, dan budidaya perikanan.
-        <br><br>
-        Terampil dalam menganalisis, mengelola, dan meningkatkan efisiensi operasional melalui solusi teknologi strategis. Saat ini menjabat sebagai ERP Executive di PT. JALA Akuakultur Lestari Alamku, bertanggung jawab atas manajemen dan implementasi sistem Odoo ERP untuk menyederhanakan operasi bisnis.
-      </p>
-
-      <h2>Pengalaman Kerja</h2>
+    <section id="certifications">
+      <h2 data-en="Certifications" data-id="Sertifikasi"></h2>
       <ul>
-        <li><strong>ERP Executive</strong> - PT. JALA Akuakultur Lestari Alamku (Feb 2024 – Sekarang)</li>
-        <li><strong>IT Support Engineer</strong> - PT. INPARTS PRIMA SUKSES (Sep 2023 – Nov 2023)</li>
-        <li><strong>IT Mining Support Officer</strong> - PT. Cardig Aero Services Tbk (Sep 2021 – Sep 2023)</li>
-        <li><strong>IT Support Technician</strong> - PT. Pamora Coffee Indonesia (Jun 2021 – Aug 2021)</li>
-        <li><strong>Technical Infrastructure Engineer</strong> - PT. Infomedia Nusantara (Mei 2020 – Jun 2021)</li>
-        <li><strong>IT Support & RFID Admin</strong> - PT. Tripatra Engineers and Constructors (Agu 2019 – Mei 2020)</li>
-        <li><strong>Project Engineer</strong> - PT. Jaya Teknik Indonesia (Feb 2019 – Jun 2019)</li>
-        <li><strong>Operator SCADA</strong> - PT. Angkasa Pura Support / PT. Jaya Teknik Indonesia (Nov 2014 – Jan 2019)</li>
+        <li>IDT Certificate Academy – PT. Jaya Teknik Indonesia / Ipsotek Ltd (2017)</li>
+        <li>In-house Training Awareness & Internal Audit ISO 9001:2015, 14001:2015, 45001:2018 – Standard Training Indonesia (Nov 2024)</li>
       </ul>
+    </section>
 
-      <h2>Proyek Odoo</h2>
+    <section id="projects">
+      <h2 data-en="Odoo Projects" data-id="Proyek Odoo"></h2>
       <ul>
-        <li>
-          <strong>Implementasi Helpdesk untuk Jala</strong><br>
-          Peran: Implementor, Lead, Sosialisasi<br>
-          Tugas: Analisa modul Helpdesk, sesuaikan kebutuhan tim Jala<br>
-          Hasil: Semua kendala terdokumentasi & SLA per tiket terukur
-        </li>
-        <li>
-          <strong>Approval Delegasi</strong><br>
-          Peran: Implementor & sosialisasi<br>
-          Tugas: Dapatkan requirement user untuk manajerial yang cuti<br>
-          Hasil: Manajer dapat memberikan approval ke user lain saat tidak aktif
-        </li>
-        <li>
-          <strong>Manajemen Input Produk di Modul Inventory</strong><br>
-          Peran: Perancang alur, pengatur akses<br>
-          Tugas: Atur alur penginputan item melalui ERP Executive
-          Hasil: Input item terkendali dan terpusat
-        </li>
-        <li>
-          <strong>Optimasi Manufacturing</strong><br>
-          Peran: Implementasi modul, analisa proses
-          Tugas: Sesuaikan proses Jala dengan modul Manufacturing Odoo
-          Hasil: Proses produksi berjalan & siap dikembangkan lebih lanjut
-        </li>
+        <li><strong>Helpdesk Implementation – Jala</strong>: Analyze and customize Helpdesk module. Result: Efficient error tracking & SLA documentation.</li>
+        <li><strong>Approval Delegation</strong>: Built a delegation feature for managerial approvals. Result: Managers can delegate approvals effectively.</li>
+        <li><strong>Inventory Product Input Management</strong>: Suggested controlled product entry through ERP Executive only. Result: Product entries standardized.</li>
+        <li><strong>Manufacturing Optimization</strong>: Implemented and adjusted Manufacturing module. Result: Manufacturing operations aligned with Odoo and scalable for future development.</li>
       </ul>
-    </div>
-  </div>
+    </section>
+  </main>
+
+  <script>
+    const switchLang = (lang) => {
+      document.querySelectorAll('[lang]').forEach(el => {
+        el.style.display = el.getAttribute('lang') === lang ? 'block' : 'none';
+      });
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.innerText = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-id');
+      });
+    };
+    // Default to ID
+    switchLang('id');
+  </script>
 </body>
 </html>

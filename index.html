@@ -10,23 +10,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0c141c;
-    --bg-alt:#0a1119;
-    --panel:#131f29;
-    --panel-2:#182632;
-    --border:rgba(231,236,239,0.10);
-    --border-strong:rgba(231,236,239,0.18);
-    --text:#e9eef1;
-    --text-dim:#a8b4bc;
-    --muted:#6d7a82;
-    --red:#f4423a;
-    --red-dim:rgba(244,66,58,0.15);
-    --amber:#f5a623;
-    --amber-dim:rgba(245,166,35,0.15);
-    --green:#33d17a;
-    --green-dim:rgba(51,209,122,0.15);
-    --cyan:#3ec6c1;
-    --radius:2px;
+    --bg:#FFFFFF;
+    --bg-soft:#F5F6F8;
+    --panel:#FFFFFF;
+    --panel-2:#EEF0F3;
+    --border:rgba(19,28,37,0.10);
+    --border-strong:rgba(19,28,37,0.20);
+    --text:#151F29;
+    --text-dim:#4C5964;
+    --muted:#8A94A0;
+
+    --red:#C7311F;
+    --red-soft:rgba(199,49,31,0.07);
+    --red-dot:#E8402C;
+
+    --amber:#93670A;
+    --amber-soft:rgba(147,103,10,0.08);
+
+    --green:#1B7A46;
+    --green-soft:rgba(27,122,70,0.08);
+    --green-dot:#2ECC71;
+
+    --cyan:#0E6B7D;
+    --cyan-soft:rgba(14,107,125,0.08);
+    --cyan-dot:#3EC6C1;
+
+    --shadow:0 1px 2px rgba(19,28,37,0.05), 0 1px 1px rgba(19,28,37,0.03);
     --maxw:1100px;
     --display:'Space Grotesk', 'Inter', sans-serif;
     --body:'Inter', sans-serif;
@@ -35,6 +44,7 @@
 
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
+  [hidden]{display:none !important;}
   body{
     background:var(--bg);
     color:var(--text);
@@ -53,237 +63,120 @@
   img{max-width:100%; display:block;}
 
   ::selection{background:var(--red); color:#fff;}
+  :focus-visible{outline:2px solid var(--red); outline-offset:3px;}
 
-  :focus-visible{
-    outline:2px solid var(--amber);
-    outline-offset:3px;
-  }
-
-  .wrap{
-    max-width:var(--maxw);
-    margin:0 auto;
-    padding:0 28px;
-  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
   @media (max-width:640px){ .wrap{padding:0 20px;} }
 
   .eyebrow{
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--amber);
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:18px;
+    font-family:var(--mono); font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--amber); display:flex; align-items:center; gap:10px; margin-bottom:18px;
   }
-  .eyebrow::before{
-    content:"";
-    width:20px;
-    height:1px;
-    background:var(--amber);
-    display:inline-block;
-  }
+  .eyebrow::before{content:""; width:20px; height:1px; background:var(--amber); display:inline-block;}
 
   /* ===== Top status strip ===== */
   .statusbar{
-    background:var(--bg-alt);
+    background:var(--bg-soft);
     border-bottom:1px solid var(--border);
-    font-family:var(--mono);
-    font-size:11px;
-    color:var(--muted);
-    letter-spacing:0.04em;
+    font-family:var(--mono); font-size:11px; color:var(--text-dim); letter-spacing:0.04em;
   }
   .statusbar .wrap{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding-top:8px;
-    padding-bottom:8px;
-    gap:16px;
-    flex-wrap:wrap;
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:8px; padding-bottom:8px; gap:16px; flex-wrap:wrap;
   }
   .statusbar .dot{
-    width:6px; height:6px; border-radius:50%;
-    background:var(--green);
-    display:inline-block;
-    margin-right:8px;
-    box-shadow:0 0 0 0 rgba(51,209,122,0.6);
-    animation:pulse 2.2s infinite;
+    width:6px; height:6px; border-radius:50%; background:var(--green-dot);
+    display:inline-block; margin-right:8px;
+    box-shadow:0 0 0 0 rgba(46,204,113,0.55); animation:pulse 2.2s infinite;
   }
   @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(51,209,122,0.55);}
-    70%{box-shadow:0 0 0 6px rgba(51,209,122,0);}
-    100%{box-shadow:0 0 0 0 rgba(51,209,122,0);}
+    0%{box-shadow:0 0 0 0 rgba(46,204,113,0.5);}
+    70%{box-shadow:0 0 0 6px rgba(46,204,113,0);}
+    100%{box-shadow:0 0 0 0 rgba(46,204,113,0);}
   }
   .statusbar .status-left, .statusbar .status-right{display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
-  .statusbar .status-right span{color:var(--text-dim);}
+  .statusbar .status-right span{color:var(--muted);}
+  .statusbar #clock{color:var(--text);}
 
   /* ===== Nav ===== */
   header.mainnav{
     position:sticky; top:0; z-index:50;
-    background:rgba(12,20,28,0.86);
+    background:rgba(255,255,255,0.88);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--border);
   }
-  .navrow{
-    display:flex; align-items:center; justify-content:space-between;
-    height:64px;
-  }
-  .brand{
-    font-family:var(--mono);
-    font-weight:600;
-    font-size:14px;
-    letter-spacing:0.02em;
-    display:flex; align-items:center; gap:10px;
-  }
+  .navrow{display:flex; align-items:center; justify-content:space-between; height:64px; gap:14px;}
+  .brand{font-family:var(--mono); font-weight:600; font-size:14px; letter-spacing:0.02em; display:flex; align-items:center; gap:10px; flex:none;}
   .brand .brk{color:var(--red);}
-  .navlinks{
-    display:flex;
-    gap:2px;
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:0.04em;
-  }
-  .navlinks a{
-    padding:8px 14px;
-    color:var(--text-dim);
-    border:1px solid transparent;
-    transition:color .2s ease, border-color .2s ease, background .2s ease;
-  }
-  .navlinks a:hover, .navlinks a.active{
-    color:var(--text);
-    border-color:var(--border-strong);
-    background:var(--panel);
-  }
+  .navlinks{display:flex; gap:2px; font-family:var(--mono); font-size:12px; letter-spacing:0.04em;}
+  .navlinks a{padding:8px 14px; color:var(--text-dim); border:1px solid transparent; transition:color .2s ease, border-color .2s ease, background .2s ease;}
+  .navlinks a:hover, .navlinks a.active{color:var(--text); border-color:var(--border-strong); background:var(--panel-2);}
   .navlinks a.active{color:var(--amber);}
-  .navcta{
-    font-family:var(--mono);
-    font-size:12px;
-    padding:9px 16px;
-    border:1px solid var(--red);
-    color:var(--red);
-    transition:background .2s ease, color .2s ease;
-    white-space:nowrap;
-  }
-  .navcta:hover{background:var(--red); color:#0c141c;}
 
-  .navtoggle{
-    display:none;
-    flex-direction:column;
-    gap:5px;
-    background:none; border:none; cursor:pointer;
-    padding:8px;
+  .navright{display:flex; align-items:center; gap:12px; flex:none;}
+  .langswitch{display:flex; border:1px solid var(--border-strong); border-radius:2px; overflow:hidden; flex:none;}
+  .langswitch button{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.04em; padding:8px 11px;
+    background:var(--panel); color:var(--muted); border:none; cursor:pointer; transition:background .2s ease, color .2s ease;
   }
+  .langswitch button + button{border-left:1px solid var(--border-strong);}
+  .langswitch button.active{background:var(--text); color:#fff;}
+  .langswitch button:hover:not(.active){background:var(--panel-2); color:var(--text);}
+
+  .navcta{
+    font-family:var(--mono); font-size:12px; padding:9px 16px;
+    border:1px solid var(--red); color:var(--red);
+    transition:background .2s ease, color .2s ease; white-space:nowrap;
+  }
+  .navcta:hover{background:var(--red); color:#fff;}
+
+  .navtoggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px;}
   .navtoggle span{width:22px; height:2px; background:var(--text);}
 
   @media (max-width:860px){
     .navlinks{display:none;}
     .navtoggle{display:flex;}
     .navcta{display:none;}
+    .navright .langswitch{display:none;}
   }
-  .mobilemenu{
-    display:none;
-    flex-direction:column;
-    border-top:1px solid var(--border);
-    background:var(--bg-alt);
-  }
+  .mobilemenu{display:none; flex-direction:column; border-top:1px solid var(--border); background:var(--bg-soft);}
   .mobilemenu.open{display:flex;}
-  .mobilemenu a{
-    padding:16px 28px;
-    font-family:var(--mono);
-    font-size:13px;
-    border-bottom:1px solid var(--border);
-    color:var(--text-dim);
-  }
+  .mobile-langrow{display:flex; justify-content:center; padding:14px 28px; border-bottom:1px solid var(--border);}
+  .mobile-langrow .langswitch{border-color:var(--border-strong);}
+  .mobilemenu a{padding:16px 28px; font-family:var(--mono); font-size:13px; border-bottom:1px solid var(--border); color:var(--text-dim);}
   .mobilemenu a.active{color:var(--amber);}
 
   /* ===== Hero / Dashboard ===== */
   .hero{
-    position:relative;
-    padding:72px 0 64px;
-    border-bottom:1px solid var(--border);
+    position:relative; padding:72px 0 64px; border-bottom:1px solid var(--border);
     background:
-      radial-gradient(600px 300px at 85% -10%, rgba(244,66,58,0.10), transparent 60%),
-      radial-gradient(500px 260px at 5% 110%, rgba(62,198,193,0.08), transparent 60%);
+      radial-gradient(600px 300px at 85% -10%, var(--red-soft), transparent 60%),
+      radial-gradient(500px 260px at 5% 110%, var(--cyan-soft), transparent 60%);
   }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1.35fr 0.9fr;
-    gap:56px;
-    align-items:start;
-  }
+  .hero-grid{display:grid; grid-template-columns:1.35fr 0.9fr; gap:56px; align-items:start;}
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr; gap:40px;}
     .hero-photo-col{order:-1; max-width:220px;}
   }
 
-  .hero h1{
-    font-family:var(--display);
-    font-weight:700;
-    font-size:clamp(38px,5.4vw,64px);
-    line-height:1.03;
-    letter-spacing:-0.01em;
-  }
+  .hero h1{font-family:var(--display); font-weight:700; font-size:clamp(38px,5.4vw,64px); line-height:1.03; letter-spacing:-0.01em; color:var(--text);}
   .hero h1 .accent{color:var(--red);}
-  .hero .role{
-    font-family:var(--mono);
-    font-size:15px;
-    color:var(--cyan);
-    margin-top:16px;
-    letter-spacing:0.02em;
-  }
-  .hero .role .cursor{
-    display:inline-block;
-    width:8px; height:16px;
-    background:var(--cyan);
-    margin-left:4px;
-    vertical-align:middle;
-    animation:blink 1s step-end infinite;
-  }
+  .hero .role{font-family:var(--mono); font-size:15px; color:var(--cyan); margin-top:16px; letter-spacing:0.02em;}
+  .hero .role .cursor{display:inline-block; width:8px; height:16px; background:var(--cyan); margin-left:4px; vertical-align:middle; animation:blink 1s step-end infinite;}
   @keyframes blink{50%{opacity:0;}}
 
-  .hero p.lede{
-    margin-top:24px;
-    max-width:56ch;
-    color:var(--text-dim);
-    font-size:16px;
-  }
+  .hero p.lede{margin-top:24px; max-width:56ch; color:var(--text-dim); font-size:16px;}
 
-  .hero-actions{
-    display:flex;
-    gap:12px;
-    margin-top:32px;
-    flex-wrap:wrap;
-  }
-  .btn{
-    font-family:var(--mono);
-    font-size:13px;
-    padding:13px 22px;
-    border:1px solid var(--border-strong);
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    transition:all .2s ease;
-  }
-  .btn-primary{background:var(--red); border-color:var(--red); color:#0c141c; font-weight:600;}
-  .btn-primary:hover{background:#ff5c50;}
-  .btn-ghost{color:var(--text);}
-  .btn-ghost:hover{border-color:var(--text); background:var(--panel);}
+  .hero-actions{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap;}
+  .btn{font-family:var(--mono); font-size:13px; padding:13px 22px; border:1px solid var(--border-strong); display:inline-flex; align-items:center; gap:8px; transition:all .2s ease;}
+  .btn-primary{background:var(--red); border-color:var(--red); color:#fff; font-weight:600; box-shadow:var(--shadow);}
+  .btn-primary:hover{background:#A9291A;}
+  .btn-ghost{color:var(--text); background:var(--panel);}
+  .btn-ghost:hover{border-color:var(--text); background:var(--panel-2);}
 
-  /* status grid */
-  .sysgrid{
-    margin-top:44px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    border:1px solid var(--border);
-  }
+  .sysgrid{margin-top:44px; display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--border); background:var(--panel); box-shadow:var(--shadow);}
   @media (max-width:640px){ .sysgrid{grid-template-columns:repeat(2,1fr);} }
-  .sysgrid .cell{
-    padding:16px 14px;
-    border-right:1px solid var(--border);
-    border-top:1px solid var(--border);
-  }
+  .sysgrid .cell{padding:16px 14px; border-right:1px solid var(--border); border-top:1px solid var(--border);}
   .sysgrid .cell:nth-child(4n){border-right:none;}
   .sysgrid .cell:nth-child(-n+4){border-top:none;}
   @media (max-width:640px){
@@ -292,191 +185,90 @@
     .sysgrid .cell:nth-child(-n+2){border-top:none;}
     .sysgrid .cell:nth-child(n+3){border-top:1px solid var(--border);}
   }
-  .sysgrid .label{
-    font-family:var(--mono);
-    font-size:11px;
-    color:var(--muted);
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-  }
-  .sysgrid .val{
-    margin-top:8px;
-    font-family:var(--mono);
-    font-size:13px;
-    display:flex; align-items:center; gap:8px;
-  }
-  .led{width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(51,209,122,0.6); animation:pulse 2.2s infinite; flex:none;}
+  .sysgrid .label{font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase;}
+  .sysgrid .val{margin-top:8px; font-family:var(--mono); font-size:13px; color:var(--green); display:flex; align-items:center; gap:8px;}
+  .led{width:7px; height:7px; border-radius:50%; background:var(--green-dot); box-shadow:0 0 0 0 rgba(46,204,113,0.55); animation:pulse 2.2s infinite; flex:none;}
 
   .hero-photo-col{display:flex; flex-direction:column; align-items:center; gap:14px;}
-  .photo-frame{
-    position:relative;
-    width:100%;
-    max-width:260px;
-    border:1px solid var(--border-strong);
-    padding:10px;
-    background:var(--panel);
-  }
-  .photo-frame::before, .photo-frame::after,
-  .photo-frame .tick-tl, .photo-frame .tick-br{
-    content:"";
-    position:absolute;
-    width:14px; height:14px;
-    border-color:var(--red);
-    border-style:solid;
-  }
+  .photo-frame{position:relative; width:100%; max-width:260px; border:1px solid var(--border-strong); padding:10px; background:var(--panel-2); box-shadow:var(--shadow);}
+  .photo-frame::before, .photo-frame::after{content:""; position:absolute; width:14px; height:14px; border-color:var(--red); border-style:solid;}
   .photo-frame::before{top:-1px; left:-1px; border-width:2px 0 0 2px;}
   .photo-frame::after{bottom:-1px; right:-1px; border-width:0 2px 2px 0;}
   .photo-frame img{width:100%; height:auto; display:block; filter:saturate(1.03);}
-  .photo-caption{
-    font-family:var(--mono);
-    font-size:11px;
-    color:var(--muted);
-    text-align:center;
-    letter-spacing:0.05em;
-  }
+  .photo-caption{font-family:var(--mono); font-size:11px; color:var(--muted); text-align:center; letter-spacing:0.05em;}
   .photo-caption .on{color:var(--green);}
 
   /* ===== Section shell ===== */
   section{padding:88px 0; border-bottom:1px solid var(--border);}
-  section h2{
-    font-family:var(--display);
-    font-weight:700;
-    font-size:clamp(26px,3.4vw,36px);
-    letter-spacing:-0.01em;
-  }
+  section.alt{background:var(--bg-soft);}
+  section h2{font-family:var(--display); font-weight:700; font-size:clamp(26px,3.4vw,36px); letter-spacing:-0.01em; color:var(--text);}
   .section-head{margin-bottom:44px; max-width:70ch;}
   .section-head p{color:var(--text-dim); margin-top:14px; font-size:15px;}
 
-  .panel{
-    background:var(--panel);
-    border:1px solid var(--border);
-    padding:28px;
-  }
-
-  /* reveal on scroll */
+  .panel{background:var(--panel); border:1px solid var(--border); padding:28px;}
   .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
   .reveal.in{opacity:1; transform:none;}
 
   /* ===== About ===== */
-  .about-grid{
-    display:grid;
-    grid-template-columns:1.4fr 1fr;
-    gap:40px;
-  }
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:40px;}
   @media (max-width:800px){ .about-grid{grid-template-columns:1fr;} }
   .about-grid p{color:var(--text-dim); margin-bottom:16px;}
   .about-grid strong{color:var(--text); font-weight:600;}
 
-  .stat-list{display:flex; flex-direction:column; gap:0; border:1px solid var(--border);}
-  .stat-list .stat{
-    padding:20px 22px;
-    border-bottom:1px solid var(--border);
-    display:flex; justify-content:space-between; align-items:baseline;
-  }
+  .stat-list{display:flex; flex-direction:column; gap:0; border:1px solid var(--border); background:var(--panel); box-shadow:var(--shadow);}
+  .stat-list .stat{padding:20px 22px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:baseline;}
   .stat-list .stat:last-child{border-bottom:none;}
-  .stat-list .num{
-    font-family:var(--display); font-weight:700; font-size:28px; color:var(--amber);
-  }
-  .stat-list .stat-label{
-    font-family:var(--mono); font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; text-align:right; max-width:14ch;
-  }
+  .stat-list .num{font-family:var(--display); font-weight:700; font-size:28px; color:var(--red);}
+  .stat-list .stat-label{font-family:var(--mono); font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; text-align:right; max-width:14ch;}
 
   /* ===== Competencies ===== */
-  .comp-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:1px;
-    background:var(--border);
-    border:1px solid var(--border);
-  }
+  .comp-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border);}
   @media (max-width:900px){ .comp-grid{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:520px){ .comp-grid{grid-template-columns:1fr;} }
-  .comp-cell{
-    background:var(--panel);
-    padding:26px 22px;
-    transition:background .2s ease;
-  }
+  .comp-cell{background:var(--panel); padding:26px 22px; transition:background .2s ease;}
   .comp-cell:hover{background:var(--panel-2);}
-  .comp-cell .tag{
-    font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em;
-  }
-  .comp-cell h3{
-    font-family:var(--display); font-size:16px; font-weight:600; margin-top:10px; margin-bottom:8px;
-  }
+  .comp-cell .tag{font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em;}
+  .comp-cell h3{font-family:var(--display); font-size:16px; font-weight:600; margin-top:10px; margin-bottom:8px; color:var(--text);}
   .comp-cell p{font-size:13px; color:var(--text-dim);}
 
   /* ===== Timeline (experience) ===== */
   .timeline{position:relative; padding-left:28px;}
-  .timeline::before{
-    content:"";
-    position:absolute; left:5px; top:6px; bottom:6px;
-    width:1px; background:var(--border-strong);
-  }
+  .timeline::before{content:""; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--border-strong);}
   .tl-item{position:relative; padding-bottom:40px;}
   .tl-item:last-child{padding-bottom:0;}
-  .tl-item::before{
-    content:"";
-    position:absolute; left:-28px; top:5px;
-    width:11px; height:11px; border-radius:50%;
-    background:var(--bg); border:2px solid var(--muted);
-  }
-  .tl-item.current::before{border-color:var(--green); background:var(--green);}
-  .tl-head{
-    display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 16px; margin-bottom:8px;
-  }
-  .tl-role{font-family:var(--display); font-weight:600; font-size:18px;}
+  .tl-item::before{content:""; position:absolute; left:-28px; top:5px; width:11px; height:11px; border-radius:50%; background:#fff; border:2px solid var(--muted);}
+  .tl-item.current::before{border-color:var(--green-dot); background:var(--green-dot);}
+  .tl-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 16px; margin-bottom:8px;}
+  .tl-role{font-family:var(--display); font-weight:600; font-size:18px; color:var(--text);}
   .tl-date{font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:0.03em;}
   .tl-item.current .tl-date{color:var(--green);}
   .tl-org{font-size:14px; color:var(--text-dim); margin-bottom:12px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
-  .chip{
-    font-family:var(--mono); font-size:10px; letter-spacing:0.05em; text-transform:uppercase;
-    padding:3px 8px; border:1px solid var(--border-strong); color:var(--text-dim);
-  }
-  .chip.aviation{border-color:var(--cyan); color:var(--cyan);}
-  .chip.mining{border-color:var(--amber); color:var(--amber);}
-  .chip.aqua{border-color:var(--green); color:var(--green);}
-  .chip.finance{border-color:var(--red); color:var(--red);}
+  .chip{font-family:var(--mono); font-size:10px; letter-spacing:0.05em; text-transform:uppercase; padding:3px 9px; border:1px solid var(--border-strong); color:var(--text-dim); background:var(--panel-2);}
+  .chip.aviation{border-color:rgba(14,107,125,0.35); color:var(--cyan); background:var(--cyan-soft);}
+  .chip.mining{border-color:rgba(147,103,10,0.35); color:var(--amber); background:var(--amber-soft);}
+  .chip.aqua{border-color:rgba(27,122,70,0.35); color:var(--green); background:var(--green-soft);}
+  .chip.finance{border-color:rgba(199,49,31,0.35); color:var(--red); background:var(--red-soft);}
   .tl-bullets{color:var(--text-dim); font-size:14px; padding-left:18px;}
   .tl-bullets li{margin-bottom:6px; position:relative;}
   .tl-bullets li::marker{color:var(--muted);}
 
-  #more-roles{
-    max-height:0; overflow:hidden;
-    transition:max-height .5s ease;
-  }
-  #more-roles.open{max-height:2400px;}
+  #more-roles{max-height:0; overflow:hidden; transition:max-height .5s ease;}
+  #more-roles.open{max-height:2600px;}
   .more-toggle{
-    margin:8px 0 32px 0;
-    background:none;
-    border:1px dashed var(--border-strong);
-    color:var(--amber);
-    font-family:var(--mono);
-    font-size:12px;
-    padding:12px 18px;
-    cursor:pointer;
-    display:inline-flex; align-items:center; gap:8px;
-    width:100%;
-    justify-content:center;
+    margin:8px 0 32px 0; background:var(--panel); border:1px dashed var(--border-strong); color:var(--amber);
+    font-family:var(--mono); font-size:12px; padding:12px 18px; cursor:pointer;
+    display:inline-flex; align-items:center; gap:8px; width:100%; justify-content:center;
   }
-  .more-toggle:hover{border-color:var(--amber); background:var(--amber-dim);}
+  .more-toggle:hover{border-color:var(--amber); background:var(--amber-soft);}
   .more-toggle .chev{transition:transform .3s ease;}
   .more-toggle.open .chev{transform:rotate(180deg);}
 
   /* ===== Case files (Odoo projects) ===== */
-  .case-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:1px;
-    background:var(--border);
-    border:1px solid var(--border);
-  }
+  .case-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border);}
   @media (max-width:760px){ .case-grid{grid-template-columns:1fr;} }
-  .case{
-    background:var(--panel);
-    padding:26px;
-  }
+  .case{background:var(--panel); padding:26px;}
   .case-id{font-family:var(--mono); font-size:11px; color:var(--red); letter-spacing:0.06em; margin-bottom:10px;}
-  .case h3{font-family:var(--display); font-size:17px; font-weight:600; margin-bottom:14px;}
+  .case h3{font-family:var(--display); font-size:17px; font-weight:600; margin-bottom:14px; color:var(--text);}
   .case dl{display:grid; grid-template-columns:auto 1fr; gap:6px 14px; font-size:13px;}
   .case dt{font-family:var(--mono); font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; padding-top:2px;}
   .case dd{color:var(--text-dim);}
@@ -488,12 +280,7 @@
   @media (max-width:560px){ .skill-cats{grid-template-columns:1fr;} }
   .skill-cat .eyebrow{margin-bottom:14px; font-size:11px;}
   .skill-tags{display:flex; flex-wrap:wrap; gap:8px;}
-  .skill-tags span{
-    font-family:var(--mono); font-size:12px;
-    padding:7px 12px;
-    border:1px solid var(--border-strong);
-    color:var(--text-dim);
-  }
+  .skill-tags span{font-family:var(--mono); font-size:12px; padding:7px 12px; border:1px solid var(--border-strong); color:var(--text-dim); background:var(--panel);}
 
   /* ===== Certs / education / languages ===== */
   .cred-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border);}
@@ -502,12 +289,12 @@
   .cred .eyebrow{font-size:11px; margin-bottom:16px;}
   .cred-item{margin-bottom:16px;}
   .cred-item:last-child{margin-bottom:0;}
-  .cred-item .t{font-weight:600; font-size:14px; margin-bottom:3px;}
+  .cred-item .t{font-weight:600; font-size:14px; margin-bottom:3px; color:var(--text);}
   .cred-item .s{font-size:12px; color:var(--muted); font-family:var(--mono);}
-  .lang-row{display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; font-size:14px;}
+  .lang-row{display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; font-size:14px; color:var(--text);}
   .lang-row:last-child{margin-bottom:0;}
   .bar{width:100px; height:5px; background:var(--panel-2); position:relative; border:1px solid var(--border-strong);}
-  .bar > i{position:absolute; left:0; top:0; bottom:0; background:var(--cyan); display:block;}
+  .bar > i{position:absolute; left:0; top:0; bottom:0; background:var(--cyan-dot); display:block;}
 
   /* ===== Achievements strip ===== */
   .ach-list{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
@@ -516,37 +303,19 @@
   .ach p{font-size:14px; color:var(--text-dim);}
 
   /* ===== Contact / footer ===== */
-  footer{padding:80px 0 40px;}
-  .contact-grid{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:40px;
-    align-items:end;
-  }
+  footer{padding:80px 0 40px; background:var(--bg-soft);}
+  .contact-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:end;}
   @media (max-width:800px){ .contact-grid{grid-template-columns:1fr;} }
-  footer h2{font-family:var(--display); font-weight:700; font-size:clamp(30px,5vw,48px); line-height:1.08;}
+  footer h2{font-family:var(--display); font-weight:700; font-size:clamp(30px,5vw,48px); line-height:1.08; color:var(--text);}
   footer .lede{color:var(--text-dim); margin-top:18px; max-width:48ch;}
-  .contact-list{display:flex; flex-direction:column; gap:0; border:1px solid var(--border);}
-  .contact-list a, .contact-list .row{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:16px 20px;
-    border-bottom:1px solid var(--border);
-    font-family:var(--mono);
-    font-size:13px;
-    transition:background .2s ease, color .2s ease;
-  }
-  .contact-list a:hover{background:var(--panel); color:var(--amber);}
+  .contact-list{display:flex; flex-direction:column; gap:0; border:1px solid var(--border); background:var(--panel); box-shadow:var(--shadow);}
+  .contact-list a, .contact-list .row{display:flex; justify-content:space-between; align-items:center; padding:16px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:13px; transition:background .2s ease, color .2s ease;}
+  .contact-list a:hover{background:var(--panel-2); color:var(--red);}
   .contact-list .row:last-child, .contact-list a:last-child{border-bottom:none;}
   .contact-list .k{color:var(--muted); text-transform:uppercase; font-size:10px; letter-spacing:0.06em;}
-  .foot-bottom{
-    margin-top:60px;
-    padding-top:24px;
-    border-top:1px solid var(--border);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
-    font-family:var(--mono); font-size:11px; color:var(--muted);
-  }
-  .backtotop{color:var(--muted); border:1px solid var(--border-strong); padding:6px 12px;}
-  .backtotop:hover{color:var(--text);}
+  .foot-bottom{margin-top:60px; padding-top:24px; border-top:1px solid var(--border); display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-family:var(--mono); font-size:11px; color:var(--muted);}
+  .backtotop{color:var(--muted); border:1px solid var(--border-strong); padding:6px 12px; background:var(--panel);}
+  .backtotop:hover{color:var(--text); background:var(--panel-2);}
 </style>
 </head>
 <body>
@@ -554,11 +323,11 @@
 <div class="statusbar">
   <div class="wrap">
     <div class="status-left">
-      <span><span class="dot"></span>AVAILABLE FOR NEW OPPORTUNITIES</span>
+      <span><span class="dot"></span><span class="lang-en">AVAILABLE FOR NEW OPPORTUNITIES</span><span class="lang-id" hidden>TERBUKA UNTUK PELUANG BARU</span></span>
       <span class="status-right"><span>Bantul, DI Yogyakarta, ID</span></span>
     </div>
     <div class="status-right">
-      <span>LOCAL TIME <span id="clock" style="color:var(--text-dim)">--:--:--</span></span>
+      <span><span class="lang-en">LOCAL TIME</span><span class="lang-id" hidden>WAKTU LOKAL</span> <span id="clock">--:--:--</span></span>
     </div>
   </div>
 </div>
@@ -568,43 +337,70 @@
     <div class="navrow">
       <a href="#top" class="brand"><span class="brk">/</span>ABDUL GAFUR<span class="brk">.</span></a>
       <nav class="navlinks" id="navlinks">
-        <a href="#about">Summary</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Odoo Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#credentials">Credentials</a>
-        <a href="#contact">Contact</a>
+        <a href="#about"><span class="lang-en">Summary</span><span class="lang-id" hidden>Ringkasan</span></a>
+        <a href="#experience"><span class="lang-en">Experience</span><span class="lang-id" hidden>Pengalaman</span></a>
+        <a href="#projects"><span class="lang-en">Odoo Projects</span><span class="lang-id" hidden>Proyek Odoo</span></a>
+        <a href="#skills"><span class="lang-en">Skills</span><span class="lang-id" hidden>Keahlian</span></a>
+        <a href="#credentials"><span class="lang-en">Credentials</span><span class="lang-id" hidden>Kredensial</span></a>
+        <a href="#contact"><span class="lang-en">Contact</span><span class="lang-id" hidden>Kontak</span></a>
       </nav>
-      <a class="navcta" href="#contact">Get in touch →</a>
+      <div class="navright">
+        <div class="langswitch" role="group" aria-label="Language / Bahasa">
+          <button type="button" data-lang-btn="en" class="active">EN</button>
+          <button type="button" data-lang-btn="id">ID</button>
+        </div>
+        <a class="navcta" href="#contact"><span class="lang-en">Get in touch →</span><span class="lang-id" hidden>Hubungi saya →</span></a>
+      </div>
       <button class="navtoggle" id="navtoggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
   <div class="mobilemenu" id="mobilemenu">
-    <a href="#about">Summary</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Odoo Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#credentials">Credentials</a>
-    <a href="#contact">Contact</a>
+    <div class="mobile-langrow">
+      <div class="langswitch" role="group" aria-label="Language / Bahasa">
+        <button type="button" data-lang-btn="en" class="active">EN</button>
+        <button type="button" data-lang-btn="id">ID</button>
+      </div>
+    </div>
+    <a href="#about"><span class="lang-en">Summary</span><span class="lang-id" hidden>Ringkasan</span></a>
+    <a href="#experience"><span class="lang-en">Experience</span><span class="lang-id" hidden>Pengalaman</span></a>
+    <a href="#projects"><span class="lang-en">Odoo Projects</span><span class="lang-id" hidden>Proyek Odoo</span></a>
+    <a href="#skills"><span class="lang-en">Skills</span><span class="lang-id" hidden>Keahlian</span></a>
+    <a href="#credentials"><span class="lang-en">Credentials</span><span class="lang-id" hidden>Kredensial</span></a>
+    <a href="#contact"><span class="lang-en">Contact</span><span class="lang-id" hidden>Kontak</span></a>
   </div>
 </header>
 
 <main id="top">
 
-  <section class="hero" style="border-bottom:1px solid var(--border); padding-top:72px;">
+  <section class="hero" style="padding-top:72px;">
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">System profile · 8+ years in production</div>
-          <h1>Keeping ERP, network &amp;<br> SCADA systems <span class="accent">online.</span></h1>
+          <div class="eyebrow">
+            <span class="lang-en">System profile · 8+ years in production</span>
+            <span class="lang-id" hidden>Profil sistem · 8+ tahun pengalaman</span>
+          </div>
+          <h1>
+            <span class="lang-en">Keeping ERP, network &amp;<br> SCADA systems <span class="accent">online.</span></span>
+            <span class="lang-id" hidden>Menjaga sistem ERP, jaringan &amp;<br> SCADA tetap <span class="accent">online.</span></span>
+          </h1>
           <div class="role">ERP Executive (Odoo) / IT Infrastructure Specialist<span class="cursor"></span></div>
-          <p class="lede">I manage and harden the systems that run behind the scenes of aviation, mining and aquaculture operations — from Odoo ERP configuration to network uptime, RFID attendance and SCADA monitoring.</p>
+          <p class="lede">
+            <span class="lang-en">I manage and harden the systems that run behind the scenes of aviation, mining and aquaculture operations — from Odoo ERP configuration to network uptime, RFID attendance and SCADA monitoring.</span>
+            <span class="lang-id" hidden>Saya mengelola dan memperkuat sistem yang bekerja di balik layar operasional aviasi, pertambangan, dan akuakultur — mulai dari konfigurasi ERP Odoo, keandalan jaringan, RFID absensi, hingga pemantauan SCADA.</span>
+          </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:abdulgafur955@gmail.com">Email me directly</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/in/abdul-gafur-851504190" target="_blank" rel="noopener">View LinkedIn</a>
-            <a class="btn btn-ghost" href="#experience">See work history ↓</a>
+            <a class="btn btn-primary" href="mailto:abdulgafur955@gmail.com">
+              <span class="lang-en">Email me directly</span><span class="lang-id" hidden>Kirim email langsung</span>
+            </a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/abdul-gafur-851504190" target="_blank" rel="noopener">
+              <span class="lang-en">View LinkedIn</span><span class="lang-id" hidden>Lihat LinkedIn</span>
+            </a>
+            <a class="btn btn-ghost" href="#experience">
+              <span class="lang-en">See work history ↓</span><span class="lang-id" hidden>Lihat riwayat kerja ↓</span>
+            </a>
           </div>
 
           <div class="sysgrid">
@@ -613,15 +409,15 @@
               <div class="val"><span class="led"></span>Online</div>
             </div>
             <div class="cell">
-              <div class="label">SCADA Ops</div>
+              <div class="label"><span class="lang-en">SCADA Ops</span><span class="lang-id" hidden>Operasi SCADA</span></div>
               <div class="val"><span class="led"></span>Online</div>
             </div>
             <div class="cell">
-              <div class="label">Network / IT Infra</div>
+              <div class="label"><span class="lang-en">Network / IT Infra</span><span class="lang-id" hidden>Jaringan / Infra IT</span></div>
               <div class="val"><span class="led"></span>Online</div>
             </div>
             <div class="cell">
-              <div class="label">RFID Systems</div>
+              <div class="label"><span class="lang-en">RFID Systems</span><span class="lang-id" hidden>Sistem RFID</span></div>
               <div class="val"><span class="led"></span>Online</div>
             </div>
           </div>
@@ -640,43 +436,104 @@
   <section id="about">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">01 — Summary</div>
-        <h2>An IT generalist who specialized where it mattered.</h2>
+        <div class="eyebrow"><span class="lang-en">01 — Summary</span><span class="lang-id" hidden>01 — Ringkasan</span></div>
+        <h2>
+          <span class="lang-en">An IT generalist who specialized where it mattered.</span>
+          <span class="lang-id" hidden>Generalis IT yang mendalami hal-hal yang benar-benar penting.</span>
+        </h2>
       </div>
       <div class="about-grid">
         <div class="reveal">
-          <p>IT professional with <strong>over 8 years of experience</strong> spanning ERP system management, SCADA operations, IT infrastructure and RFID administration — built across three very different industries: aviation, mining and aquaculture.</p>
-          <p>Currently working as <strong>IT &amp; System Support at CV. Lozy Hijab</strong>, keeping devices, applications and information systems running securely for daily business operations, while previously serving as <strong>ERP Executive / Odoo Fungsional at PT. JALA Akuakultur Lestari Alamku</strong>, managing and implementing Odoo ERP (v16 &amp; 19) to streamline business operations end‑to‑end.</p>
-          <p>The common thread across every role: taking systems that are business‑critical but easy to take for granted — baggage‑handling SCADA, plant networks, ERP databases, attendance hardware — and making sure they simply keep working.</p>
+          <p class="lang-en">IT professional with <strong>over 8 years of experience</strong> spanning ERP system management, SCADA operations, IT infrastructure and RFID administration — built across three very different industries: aviation, mining and aquaculture.</p>
+          <p class="lang-id" hidden>Profesional IT dengan <strong>pengalaman lebih dari 8 tahun</strong> di bidang manajemen sistem ERP, operasional SCADA, infrastruktur IT, dan administrasi RFID — dibangun lintas tiga industri yang sangat berbeda: aviasi, pertambangan, dan akuakultur.</p>
+
+          <p class="lang-en">Currently working as <strong>IT &amp; System Support at CV. Lozy Hijab</strong>, keeping devices, applications and information systems running securely for daily business operations, while previously serving as <strong>ERP Executive / Odoo Fungsional at PT. JALA Akuakultur Lestari Alamku</strong>, managing and implementing Odoo ERP (v16 &amp; 19) to streamline business operations end‑to‑end.</p>
+          <p class="lang-id" hidden>Saat ini bekerja sebagai <strong>IT &amp; System Support di CV. Lozy Hijab</strong>, menjaga perangkat, aplikasi, dan sistem informasi tetap berjalan aman untuk operasional bisnis sehari‑hari. Sebelumnya menjabat sebagai <strong>ERP Executive / Odoo Fungsional di PT. JALA Akuakultur Lestari Alamku</strong>, mengelola dan mengimplementasikan Odoo ERP (v16 &amp; 19) untuk menyederhanakan proses bisnis secara menyeluruh.</p>
+
+          <p class="lang-en">The common thread across every role: taking systems that are business‑critical but easy to take for granted — baggage‑handling SCADA, plant networks, ERP databases, attendance hardware — and making sure they simply keep working.</p>
+          <p class="lang-id" hidden>Benang merah dari semua peran tersebut: menangani sistem yang krusial bagi bisnis namun sering luput dari perhatian — SCADA baggage handling, jaringan pabrik, basis data ERP, perangkat absensi — dan memastikan semuanya tetap berjalan.</p>
         </div>
         <div class="reveal">
           <div class="stat-list">
-            <div class="stat"><span class="num">8+</span><span class="stat-label">Years in IT &amp; ERP</span></div>
-            <div class="stat"><span class="num">10</span><span class="stat-label">Companies &amp; roles</span></div>
-            <div class="stat"><span class="num">3</span><span class="stat-label">Industries: aviation, mining, aquaculture</span></div>
-            <div class="stat"><span class="num">264</span><span class="stat-label">Cameras installed, Soekarno‑Hatta T3</span></div>
+            <div class="stat">
+              <span class="num">8+</span>
+              <span class="stat-label"><span class="lang-en">Years in IT &amp; ERP</span><span class="lang-id" hidden>Tahun di IT &amp; ERP</span></span>
+            </div>
+            <div class="stat">
+              <span class="num">10</span>
+              <span class="stat-label"><span class="lang-en">Companies &amp; roles</span><span class="lang-id" hidden>Perusahaan &amp; posisi</span></span>
+            </div>
+            <div class="stat">
+              <span class="num">3</span>
+              <span class="stat-label"><span class="lang-en">Industries: aviation, mining, aquaculture</span><span class="lang-id" hidden>Industri: aviasi, tambang, akuakultur</span></span>
+            </div>
+            <div class="stat">
+              <span class="num">264</span>
+              <span class="stat-label"><span class="lang-en">Cameras installed, Soekarno‑Hatta T3</span><span class="lang-id" hidden>Kamera terpasang, Bandara Soekarno‑Hatta T3</span></span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="competencies">
+  <section id="competencies" class="alt">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">02 — Core competencies</div>
-        <h2>Eight subsystems, one operator.</h2>
-        <p>What I'm actually hired to keep running, in order of how often it comes up.</p>
+        <div class="eyebrow"><span class="lang-en">02 — Core competencies</span><span class="lang-id" hidden>02 — Kompetensi inti</span></div>
+        <h2><span class="lang-en">Eight subsystems, one operator.</span><span class="lang-id" hidden>Delapan subsistem, satu operator.</span></h2>
+        <p class="lang-en">What I'm actually hired to keep running, in order of how often it comes up.</p>
+        <p class="lang-id" hidden>Hal-hal yang benar-benar saya kerjakan sehari-hari, diurutkan dari yang paling sering muncul.</p>
       </div>
       <div class="comp-grid reveal">
-        <div class="comp-cell"><div class="tag">MODULE 01</div><h3>ERP System Management</h3><p>Odoo (v16 &amp; 19) — Helpdesk, Document, Manufacturing, Employee &amp; Inventory modules.</p></div>
-        <div class="comp-cell"><div class="tag">MODULE 02</div><h3>IT Infrastructure &amp; Network</h3><p>LAN/WAN design and support, connectivity troubleshooting, uptime monitoring.</p></div>
-        <div class="comp-cell"><div class="tag">MODULE 03</div><h3>SCADA Operations</h3><p>Monitoring and reporting on baggage‑handling and industrial control systems.</p></div>
-        <div class="comp-cell"><div class="tag">MODULE 04</div><h3>RFID Administration</h3><p>Attendance systems, ID badge issuance, device support for staff &amp; subcontractors.</p></div>
-        <div class="comp-cell"><div class="tag">MODULE 05</div><h3>Hardware &amp; Software Support</h3><p>End‑to‑end troubleshooting across desktops, laptops, printers, scanners and CCTV.</p></div>
-        <div class="comp-cell"><div class="tag">MODULE 06</div><h3>Database &amp; Reporting</h3><p>Data integrity, sales/purchase reporting, decision‑support analysis in MySQL &amp; Odoo.</p></div>
-        <div class="comp-cell"><div class="tag">MODULE 07</div><h3>Project &amp; Technical Support</h3><p>Field installation, periodic maintenance and stakeholder reporting on live sites.</p></div>
-        <div class="comp-cell"><div class="tag">MODULE 08</div><h3>System Integration</h3><p>Connecting Odoo with third‑party apps (OMS, WMS, Talenta, Olsera, Accurate).</p></div>
+        <div class="comp-cell">
+          <div class="tag"><span class="lang-en">MODULE 01</span><span class="lang-id" hidden>MODUL 01</span></div>
+          <h3><span class="lang-en">ERP System Management</span><span class="lang-id" hidden>Manajemen Sistem ERP</span></h3>
+          <p class="lang-en">Odoo (v16 &amp; 19) — Helpdesk, Document, Manufacturing, Employee &amp; Inventory modules.</p>
+          <p class="lang-id" hidden>Odoo (v16 &amp; 19) — modul Helpdesk, Dokumen, Manufaktur, Karyawan &amp; Inventaris.</p>
+        </div>
+        <div class="comp-cell">
+          <div class="tag"><span class="lang-en">MODULE 02</span><span class="lang-id" hidden>MODUL 02</span></div>
+          <h3><span class="lang-en">IT Infrastructure &amp; Network</span><span class="lang-id" hidden>Infrastruktur &amp; Jaringan IT</span></h3>
+          <p class="lang-en">LAN/WAN design and support, connectivity troubleshooting, uptime monitoring.</p>
+          <p class="lang-id" hidden>Desain dan dukungan LAN/WAN, troubleshooting konektivitas, pemantauan uptime.</p>
+        </div>
+        <div class="comp-cell">
+          <div class="tag"><span class="lang-en">MODULE 03</span><span class="lang-id" hidden>MODUL 03</span></div>
+          <h3><span class="lang-en">SCADA Operations</span><span class="lang-id" hidden>Operasional SCADA</span></h3>
+          <p class="lang-en">Monitoring and reporting on baggage‑handling and industrial control systems.</p>
+          <p class="lang-id" hidden>Pemantauan dan pelaporan sistem baggage handling serta kontrol industri.</p>
+        </div>
+        <div class="comp-cell">
+          <div class="tag"><span class="lang-en">MODULE 04</span><span class="lang-id" hidden>MODUL 04</span></div>
+          <h3><span class="lang-en">RFID Administration</span><span class="lang-id" hidden>Administrasi RFID</span></h3>
+          <p class="lang-en">Attendance systems, ID badge issuance, device support for staff &amp; subcontractors.</p>
+          <p class="lang-id" hidden>Sistem absensi, penerbitan kartu ID, dan dukungan perangkat untuk staf &amp; subkontraktor.</p>
+        </div>
+        <div class="comp-cell">
+          <div class="tag"><span class="lang-en">MODULE 05</span><span class="lang-id" hidden>MODUL 05</span></div>
+          <h3><span class="lang-en">Hardware &amp; Software Support</span><span class="lang-id" hidden>Dukungan Hardware &amp; Software</span></h3>
+          <p class="lang-en">End‑to‑end troubleshooting across desktops, laptops, printers, scanners and CCTV.</p>
+          <p class="lang-id" hidden>Troubleshooting menyeluruh untuk desktop, laptop, printer, scanner, dan CCTV.</p>
+        </div>
+        <div class="comp-cell">
+          <div class="tag"><span class="lang-en">MODULE 06</span><span class="lang-id" hidden>MODUL 06</span></div>
+          <h3><span class="lang-en">Database &amp; Reporting</span><span class="lang-id" hidden>Basis Data &amp; Pelaporan</span></h3>
+          <p class="lang-en">Data integrity, sales/purchase reporting, decision‑support analysis in MySQL &amp; Odoo.</p>
+          <p class="lang-id" hidden>Integritas data, pelaporan penjualan/pembelian, dan analisis pendukung keputusan di MySQL &amp; Odoo.</p>
+        </div>
+        <div class="comp-cell">
+          <div class="tag"><span class="lang-en">MODULE 07</span><span class="lang-id" hidden>MODUL 07</span></div>
+          <h3><span class="lang-en">Project &amp; Technical Support</span><span class="lang-id" hidden>Proyek &amp; Dukungan Teknis</span></h3>
+          <p class="lang-en">Field installation, periodic maintenance and stakeholder reporting on live sites.</p>
+          <p class="lang-id" hidden>Instalasi lapangan, pemeliharaan berkala, dan pelaporan ke stakeholder di lokasi kerja.</p>
+        </div>
+        <div class="comp-cell">
+          <div class="tag"><span class="lang-en">MODULE 08</span><span class="lang-id" hidden>MODUL 08</span></div>
+          <h3><span class="lang-en">System Integration</span><span class="lang-id" hidden>Integrasi Sistem</span></h3>
+          <p class="lang-en">Connecting Odoo with third‑party apps (OMS, WMS, Talenta, Olsera, Accurate).</p>
+          <p class="lang-id" hidden>Menghubungkan Odoo dengan aplikasi pihak ketiga (OMS, WMS, Talenta, Olsera, Accurate).</p>
+        </div>
       </div>
     </div>
   </section>
@@ -684,112 +541,143 @@
   <section id="experience">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">03 — Experience log</div>
-        <h2>Ten roles. One recurring job: keep it running.</h2>
-        <p>Reverse‑chronological, from the current post backward to where the SCADA work began in 2014.</p>
+        <div class="eyebrow"><span class="lang-en">03 — Experience log</span><span class="lang-id" hidden>03 — Log pengalaman</span></div>
+        <h2><span class="lang-en">Ten roles. One recurring job: keep it running.</span><span class="lang-id" hidden>Sepuluh peran. Satu tugas yang selalu sama: menjaga semuanya tetap berjalan.</span></h2>
+        <p class="lang-en">Reverse‑chronological, from the current post backward to where the SCADA work began in 2014.</p>
+        <p class="lang-id" hidden>Disusun dari yang terbaru ke yang terlama, mulai dari posisi saat ini hingga awal karier SCADA pada 2014.</p>
       </div>
 
       <div class="timeline reveal">
 
         <div class="tl-item current">
-          <div class="tl-head"><span class="tl-role">IT &amp; System Support</span><span class="tl-date">Dec 2025 — Present</span></div>
-          <div class="tl-org">CV. Lozy Hijab <span class="chip">Retail / Fashion</span></div>
+          <div class="tl-head"><span class="tl-role">IT &amp; System Support</span><span class="tl-date"><span class="lang-en">Dec 2025 — Present</span><span class="lang-id" hidden>Des 2025 — Sekarang</span></span></div>
+          <div class="tl-org">CV. Lozy Hijab <span class="chip"><span class="lang-en">Retail / Fashion</span><span class="lang-id" hidden>Ritel / Fashion</span></span></div>
           <ul class="tl-bullets">
-            <li>Own uptime and security for all IT devices, applications and information systems supporting daily operations.</li>
-            <li>Support and maintain ERP Odoo (16 &amp; 19), OMS, WMS, Talenta, Olsera and Accurate.</li>
-            <li>Manage LAN/WiFi/internet connectivity, backups, and local/cloud server administration.</li>
-            <li>Author IT SOPs, documentation and reports; support internal IT audits.</li>
+            <li class="lang-en">Own uptime and security for all IT devices, applications and information systems supporting daily operations.</li>
+            <li class="lang-id" hidden>Bertanggung jawab atas keandalan dan keamanan seluruh perangkat IT, aplikasi, dan sistem informasi yang menunjang operasional harian.</li>
+            <li class="lang-en">Support and maintain ERP Odoo (16 &amp; 19), OMS, WMS, Talenta, Olsera and Accurate.</li>
+            <li class="lang-id" hidden>Mendukung dan memelihara ERP Odoo (16 &amp; 19), OMS, WMS, Talenta, Olsera, dan Accurate.</li>
+            <li class="lang-en">Manage LAN/WiFi/internet connectivity, backups, and local/cloud server administration.</li>
+            <li class="lang-id" hidden>Mengelola konektivitas LAN/WiFi/internet, backup data, serta administrasi server lokal/cloud.</li>
+            <li class="lang-en">Author IT SOPs, documentation and reports; support internal IT audits.</li>
+            <li class="lang-id" hidden>Menyusun SOP IT, dokumentasi, dan laporan; mendukung audit IT internal.</li>
           </ul>
         </div>
 
         <div class="tl-item">
-          <div class="tl-head"><span class="tl-role">ERP Executive / Odoo Fungsional</span><span class="tl-date">Feb 2024 — Dec 2025</span></div>
-          <div class="tl-org">PT. JALA Akuakultur Lestari Alamku <span class="chip aqua">Aquaculture</span></div>
+          <div class="tl-head"><span class="tl-role">ERP Executive / Odoo Fungsional</span><span class="tl-date"><span class="lang-en">Feb 2024 — Dec 2025</span><span class="lang-id" hidden>Feb 2024 — Des 2025</span></span></div>
+          <div class="tl-org">PT. JALA Akuakultur Lestari Alamku <span class="chip aqua"><span class="lang-en">Aquaculture</span><span class="lang-id" hidden>Akuakultur</span></span></div>
           <ul class="tl-bullets">
-            <li>Managed and oversaw the Odoo Ver 16 ERP system across all business functions.</li>
-            <li>Customized and configured Odoo modules to fit specific business requirements.</li>
-            <li>Ensured data integrity, accuracy and security within the ERP system.</li>
-            <li>Delivered technical support and training to drive user adoption of Odoo.</li>
+            <li class="lang-en">Managed and oversaw the Odoo Ver 16 ERP system across all business functions.</li>
+            <li class="lang-id" hidden>Mengelola dan mengawasi sistem ERP Odoo versi 16 di seluruh fungsi bisnis.</li>
+            <li class="lang-en">Customized and configured Odoo modules to fit specific business requirements.</li>
+            <li class="lang-id" hidden>Melakukan kustomisasi dan konfigurasi modul Odoo sesuai kebutuhan bisnis.</li>
+            <li class="lang-en">Ensured data integrity, accuracy and security within the ERP system.</li>
+            <li class="lang-id" hidden>Menjaga integritas, akurasi, dan keamanan data dalam sistem ERP.</li>
+            <li class="lang-en">Delivered technical support and training to drive user adoption of Odoo.</li>
+            <li class="lang-id" hidden>Memberikan dukungan teknis dan pelatihan untuk mendorong adopsi Odoo oleh pengguna.</li>
           </ul>
         </div>
 
         <div class="tl-item">
           <div class="tl-head"><span class="tl-role">IT Support Engineer</span><span class="tl-date">Sep 2023 — Nov 2023</span></div>
-          <div class="tl-org">PT. INPARTS PRIMA SUKSES <span class="chip">Automotive Parts</span></div>
+          <div class="tl-org">PT. INPARTS PRIMA SUKSES <span class="chip"><span class="lang-en">Automotive Parts</span><span class="lang-id" hidden>Suku Cadang Otomotif</span></span></div>
           <ul class="tl-bullets">
-            <li>Repaired IT equipment, software and computer networks.</li>
-            <li>Resolved issues within the Odoo Ver 16 reporting system.</li>
+            <li class="lang-en">Repaired IT equipment, software and computer networks.</li>
+            <li class="lang-id" hidden>Memperbaiki peralatan IT, software, dan jaringan komputer.</li>
+            <li class="lang-en">Resolved issues within the Odoo Ver 16 reporting system.</li>
+            <li class="lang-id" hidden>Menyelesaikan kendala pada sistem pelaporan Odoo versi 16.</li>
           </ul>
         </div>
 
         <div class="tl-item">
           <div class="tl-head"><span class="tl-role">IT Mining Support Officer</span><span class="tl-date">Sep 2021 — Sep 2023</span></div>
-          <div class="tl-org">PT. Cardig Aero Services Tbk (CAS Group) <span class="chip mining">Mining · Kalimantan</span></div>
+          <div class="tl-org">PT. Cardig Aero Services Tbk (CAS Group) <span class="chip mining"><span class="lang-en">Mining · Kalimantan</span><span class="lang-id" hidden>Tambang · Kalimantan</span></span></div>
           <ul class="tl-bullets">
-            <li>Provided on‑site IT support for mining operations in the Kalimantan region.</li>
-            <li>Maintained and troubleshot hardware, software and network systems.</li>
-            <li>Resolved issues with the Odoo reporting system.</li>
+            <li class="lang-en">Provided on‑site IT support for mining operations in the Kalimantan region.</li>
+            <li class="lang-id" hidden>Memberikan dukungan IT langsung di lokasi untuk operasional tambang di wilayah Kalimantan.</li>
+            <li class="lang-en">Maintained and troubleshot hardware, software and network systems.</li>
+            <li class="lang-id" hidden>Melakukan pemeliharaan dan troubleshooting perangkat keras, perangkat lunak, dan sistem jaringan.</li>
+            <li class="lang-en">Resolved issues with the Odoo reporting system.</li>
+            <li class="lang-id" hidden>Menyelesaikan kendala pada sistem pelaporan Odoo.</li>
           </ul>
         </div>
 
         <button class="more-toggle" id="moreToggle" aria-expanded="false" aria-controls="more-roles">
-          Show 6 earlier roles (2014 – 2021) <span class="chev">▾</span>
+          <span class="lang-en mt-closed">Show 6 earlier roles (2014 – 2021)</span>
+          <span class="lang-en mt-open" hidden>Hide earlier roles</span>
+          <span class="lang-id mt-closed" hidden>Tampilkan 6 peran sebelumnya (2014 – 2021)</span>
+          <span class="lang-id mt-open" hidden>Sembunyikan peran sebelumnya</span>
+          <span class="chev">▾</span>
         </button>
 
         <div id="more-roles">
 
           <div class="tl-item">
-            <div class="tl-head"><span class="tl-role">IT Support Technician</span><span class="tl-date">Jun 2021 — Aug 2021</span></div>
+            <div class="tl-head"><span class="tl-role">IT Support Technician</span><span class="tl-date"><span class="lang-en">Jun 2021 — Aug 2021</span><span class="lang-id" hidden>Jun 2021 — Agu 2021</span></span></div>
             <div class="tl-org">PT. Pamora Coffee Indonesia <span class="chip">F&amp;B</span></div>
             <ul class="tl-bullets">
-              <li>Managed the Odoo system as Database Administrator; maintained sales &amp; purchase data.</li>
-              <li>Conducted hardware and software maintenance and troubleshooting.</li>
+              <li class="lang-en">Managed the Odoo system as Database Administrator; maintained sales &amp; purchase data.</li>
+              <li class="lang-id" hidden>Mengelola sistem Odoo sebagai Database Administrator; memelihara data penjualan &amp; pembelian.</li>
+              <li class="lang-en">Conducted hardware and software maintenance and troubleshooting.</li>
+              <li class="lang-id" hidden>Melakukan pemeliharaan dan troubleshooting perangkat keras dan lunak.</li>
             </ul>
           </div>
 
           <div class="tl-item">
-            <div class="tl-head"><span class="tl-role">Technical Infrastructure Engineer</span><span class="tl-date">May 2020 — Jun 2021</span></div>
-            <div class="tl-org">PT. Infomedia Nusantara (Maybank Indonesia) <span class="chip finance">Banking</span></div>
+            <div class="tl-head"><span class="tl-role">Technical Infrastructure Engineer</span><span class="tl-date"><span class="lang-en">May 2020 — Jun 2021</span><span class="lang-id" hidden>Mei 2020 — Jun 2021</span></span></div>
+            <div class="tl-org">PT. Infomedia Nusantara (Maybank Indonesia) <span class="chip finance"><span class="lang-en">Banking</span><span class="lang-id" hidden>Perbankan</span></span></div>
             <ul class="tl-bullets">
-              <li>Installed, updated and evaluated computer systems, software and networks for Maybank branches in Balikpapan.</li>
-              <li>Repaired problematic networks and ensured timely system/application updates.</li>
+              <li class="lang-en">Installed, updated and evaluated computer systems, software and networks for Maybank branches in Balikpapan.</li>
+              <li class="lang-id" hidden>Memasang, memperbarui, dan mengevaluasi sistem komputer, software, dan jaringan untuk cabang Maybank di Balikpapan.</li>
+              <li class="lang-en">Repaired problematic networks and ensured timely system/application updates.</li>
+              <li class="lang-id" hidden>Memperbaiki gangguan jaringan dan memastikan pembaruan sistem/aplikasi tepat waktu.</li>
             </ul>
           </div>
 
           <div class="tl-item">
-            <div class="tl-head"><span class="tl-role">IT Support &amp; RFID Admin</span><span class="tl-date">Aug 2019 — May 2020</span></div>
-            <div class="tl-org">PT. Tripatra Engineers and Constructors <span class="chip">Engineering / EPC</span></div>
+            <div class="tl-head"><span class="tl-role">IT Support &amp; RFID Admin</span><span class="tl-date"><span class="lang-en">Aug 2019 — May 2020</span><span class="lang-id" hidden>Agu 2019 — Mei 2020</span></span></div>
+            <div class="tl-org">PT. Tripatra Engineers and Constructors <span class="chip"><span class="lang-en">Engineering / EPC</span><span class="lang-id" hidden>Teknik / EPC</span></span></div>
             <ul class="tl-bullets">
-              <li>Managed RFID and fingerprint attendance systems for employees and subcontractors.</li>
-              <li>Provided IT support for network installation, internet connectivity and hardware setup.</li>
-              <li>Produced employee ID badges and supported RFID devices.</li>
+              <li class="lang-en">Managed RFID and fingerprint attendance systems for employees and subcontractors.</li>
+              <li class="lang-id" hidden>Mengelola sistem absensi RFID dan sidik jari untuk karyawan dan subkontraktor.</li>
+              <li class="lang-en">Provided IT support for network installation, internet connectivity and hardware setup.</li>
+              <li class="lang-id" hidden>Memberikan dukungan IT untuk instalasi jaringan, konektivitas internet, dan penyiapan perangkat keras.</li>
+              <li class="lang-en">Produced employee ID badges and supported RFID devices.</li>
+              <li class="lang-id" hidden>Membuat kartu identitas karyawan dan mendukung perangkat RFID.</li>
             </ul>
           </div>
 
           <div class="tl-item">
             <div class="tl-head"><span class="tl-role">Project Engineer</span><span class="tl-date">Feb 2019 — Jun 2019</span></div>
-            <div class="tl-org">PT. Jaya Teknik Indonesia <span class="chip aviation">Aviation</span></div>
+            <div class="tl-org">PT. Jaya Teknik Indonesia <span class="chip aviation"><span class="lang-en">Aviation</span><span class="lang-id" hidden>Aviasi</span></span></div>
             <ul class="tl-bullets">
-              <li>Led installation and maintenance of 264 new cameras at Soekarno‑Hatta Airport Terminal 3.</li>
-              <li>Conducted periodic maintenance and troubleshooting; reported daily/weekly to Angkasa Pura 2.</li>
+              <li class="lang-en">Led installation and maintenance of 264 new cameras at Soekarno‑Hatta Airport Terminal 3.</li>
+              <li class="lang-id" hidden>Memimpin instalasi dan pemeliharaan 264 unit kamera baru di Terminal 3 Bandara Soekarno‑Hatta.</li>
+              <li class="lang-en">Conducted periodic maintenance and troubleshooting; reported daily/weekly to Angkasa Pura 2.</li>
+              <li class="lang-id" hidden>Melakukan pemeliharaan dan troubleshooting berkala; melapor harian/mingguan ke Angkasa Pura 2.</li>
             </ul>
           </div>
 
           <div class="tl-item">
             <div class="tl-head"><span class="tl-role">SCADA Operator</span><span class="tl-date">Nov 2018 — Jan 2019</span></div>
-            <div class="tl-org">PT. Angkasa Pura Support <span class="chip aviation">Aviation</span></div>
+            <div class="tl-org">PT. Angkasa Pura Support <span class="chip aviation"><span class="lang-en">Aviation</span><span class="lang-id" hidden>Aviasi</span></span></div>
             <ul class="tl-bullets">
-              <li>Operated and monitored baggage‑handling systems at Sultan Aji Muhammad Sulaiman Airport.</li>
-              <li>Reported daily, weekly and monthly activity to Angkasa Pura.</li>
+              <li class="lang-en">Operated and monitored baggage‑handling systems at Sultan Aji Muhammad Sulaiman Airport.</li>
+              <li class="lang-id" hidden>Mengoperasikan dan memantau sistem baggage handling di Bandara Sultan Aji Muhammad Sulaiman.</li>
+              <li class="lang-en">Reported daily, weekly and monthly activity to Angkasa Pura.</li>
+              <li class="lang-id" hidden>Melaporkan aktivitas harian, mingguan, dan bulanan kepada Angkasa Pura.</li>
             </ul>
           </div>
 
           <div class="tl-item">
-            <div class="tl-head"><span class="tl-role">SCADA Operator</span><span class="tl-date">Nov 2014 — Oct 2018</span></div>
-            <div class="tl-org">PT. Jaya Teknik Indonesia <span class="chip aviation">Aviation</span></div>
+            <div class="tl-head"><span class="tl-role">SCADA Operator</span><span class="tl-date"><span class="lang-en">Nov 2014 — Oct 2018</span><span class="lang-id" hidden>Nov 2014 — Okt 2018</span></span></div>
+            <div class="tl-org">PT. Jaya Teknik Indonesia <span class="chip aviation"><span class="lang-en">Aviation</span><span class="lang-id" hidden>Aviasi</span></span></div>
             <ul class="tl-bullets">
-              <li>Operated and monitored baggage‑handling systems at Sultan Aji Muhammad Sulaiman Airport.</li>
-              <li>Reported daily, weekly and monthly activity to Angkasa Pura — the role where this all started.</li>
+              <li class="lang-en">Operated and monitored baggage‑handling systems at Sultan Aji Muhammad Sulaiman Airport.</li>
+              <li class="lang-id" hidden>Mengoperasikan dan memantau sistem baggage handling di Bandara Sultan Aji Muhammad Sulaiman.</li>
+              <li class="lang-en">Reported daily, weekly and monthly activity to Angkasa Pura — the role where this all started.</li>
+              <li class="lang-id" hidden>Melaporkan aktivitas harian, mingguan, dan bulanan kepada Angkasa Pura — titik awal dari semua ini.</li>
             </ul>
           </div>
 
@@ -798,44 +686,61 @@
     </div>
   </section>
 
-  <section id="projects">
+  <section id="projects" class="alt">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">04 — Case files</div>
-        <h2>Inside the Odoo work at PT. JALA Akuakultur.</h2>
-        <p>Four representative changes made to the ERP environment, and what changed afterward.</p>
+        <div class="eyebrow"><span class="lang-en">04 — Case files</span><span class="lang-id" hidden>04 — Studi kasus</span></div>
+        <h2><span class="lang-en">Inside the Odoo work at PT. JALA Akuakultur.</span><span class="lang-id" hidden>Di balik proyek Odoo di PT. JALA Akuakultur.</span></h2>
+        <p class="lang-en">Four representative changes made to the ERP environment, and what changed afterward.</p>
+        <p class="lang-id" hidden>Empat perubahan representatif pada lingkungan ERP, beserta hasilnya.</p>
       </div>
       <div class="case-grid reveal">
         <div class="case">
-          <div class="case-id">CASE‑01 / HELPDESK</div>
-          <h3>Helpdesk module rollout</h3>
+          <div class="case-id"><span class="lang-en">CASE‑01 / HELPDESK</span><span class="lang-id" hidden>KASUS‑01 / HELPDESK</span></div>
+          <h3><span class="lang-en">Helpdesk module rollout</span><span class="lang-id" hidden>Peluncuran modul Helpdesk</span></h3>
           <dl>
-            <dt>Action</dt><dd>Led and socialized adoption of the default Odoo Helpdesk module across the team.</dd>
-            <dt>Result</dt><dd class="result">Clear SLAs and documented resolution handling.</dd>
+            <dt><span class="lang-en">Action</span><span class="lang-id" hidden>Tindakan</span></dt>
+            <dd class="lang-en">Led and socialized adoption of the default Odoo Helpdesk module across the team.</dd>
+            <dd class="lang-id" hidden>Memimpin dan mensosialisasikan adopsi modul Helpdesk bawaan Odoo ke seluruh tim.</dd>
+            <dt><span class="lang-en">Result</span><span class="lang-id" hidden>Hasil</span></dt>
+            <dd class="result lang-en">Clear SLAs and documented resolution handling.</dd>
+            <dd class="result lang-id" hidden>SLA menjadi jelas dan penanganan penyelesaian terdokumentasi.</dd>
           </dl>
         </div>
         <div class="case">
-          <div class="case-id">CASE‑02 / APPROVALS</div>
-          <h3>Approval delegation logic</h3>
+          <div class="case-id"><span class="lang-en">CASE‑02 / APPROVALS</span><span class="lang-id" hidden>KASUS‑02 / PERSETUJUAN</span></div>
+          <h3><span class="lang-en">Approval delegation logic</span><span class="lang-id" hidden>Logika delegasi persetujuan</span></h3>
           <dl>
-            <dt>Action</dt><dd>Designed delegation logic so managerial approvals don't stall when a manager is away.</dd>
-            <dt>Result</dt><dd class="result">Substitutions during leave are now structured.</dd>
+            <dt><span class="lang-en">Action</span><span class="lang-id" hidden>Tindakan</span></dt>
+            <dd class="lang-en">Designed delegation logic so managerial approvals don't stall when a manager is away.</dd>
+            <dd class="lang-id" hidden>Merancang logika delegasi agar persetujuan manajerial tidak terhambat saat manajer berhalangan.</dd>
+            <dt><span class="lang-en">Result</span><span class="lang-id" hidden>Hasil</span></dt>
+            <dd class="result lang-en">Substitutions during leave are now structured.</dd>
+            <dd class="result lang-id" hidden>Pengalihan wewenang saat cuti kini terstruktur.</dd>
           </dl>
         </div>
         <div class="case">
-          <div class="case-id">CASE‑03 / INVENTORY</div>
-          <h3>Inventory input management</h3>
+          <div class="case-id"><span class="lang-en">CASE‑03 / INVENTORY</span><span class="lang-id" hidden>KASUS‑03 / INVENTARIS</span></div>
+          <h3><span class="lang-en">Inventory input management</span><span class="lang-id" hidden>Manajemen input inventaris</span></h3>
           <dl>
-            <dt>Action</dt><dd>Centralized the product input process and tightened access control.</dd>
-            <dt>Result</dt><dd class="result">All items managed under ERP Executive supervision.</dd>
+            <dt><span class="lang-en">Action</span><span class="lang-id" hidden>Tindakan</span></dt>
+            <dd class="lang-en">Centralized the product input process and tightened access control.</dd>
+            <dd class="lang-id" hidden>Memusatkan proses input produk dan memperketat kontrol akses.</dd>
+            <dt><span class="lang-en">Result</span><span class="lang-id" hidden>Hasil</span></dt>
+            <dd class="result lang-en">All items managed under ERP Executive supervision.</dd>
+            <dd class="result lang-id" hidden>Seluruh item dikelola di bawah pengawasan ERP Executive.</dd>
           </dl>
         </div>
         <div class="case">
-          <div class="case-id">CASE‑04 / MANUFACTURING</div>
-          <h3>Manufacturing flow optimization</h3>
+          <div class="case-id"><span class="lang-en">CASE‑04 / MANUFACTURING</span><span class="lang-id" hidden>KASUS‑04 / MANUFAKTUR</span></div>
+          <h3><span class="lang-en">Manufacturing flow optimization</span><span class="lang-id" hidden>Optimasi alur manufaktur</span></h3>
           <dl>
-            <dt>Action</dt><dd>Adjusted the manufacturing module configuration to match real shop‑floor processes.</dd>
-            <dt>Result</dt><dd class="result">Temporary flow achieved; staged for further improvement.</dd>
+            <dt><span class="lang-en">Action</span><span class="lang-id" hidden>Tindakan</span></dt>
+            <dd class="lang-en">Adjusted the manufacturing module configuration to match real shop‑floor processes.</dd>
+            <dd class="lang-id" hidden>Menyesuaikan konfigurasi modul manufaktur agar sesuai proses nyata di lapangan.</dd>
+            <dt><span class="lang-en">Result</span><span class="lang-id" hidden>Hasil</span></dt>
+            <dd class="result lang-en">Temporary flow achieved; staged for further improvement.</dd>
+            <dd class="result lang-id" hidden>Alur sementara berhasil diterapkan; disiapkan untuk penyempurnaan lebih lanjut.</dd>
           </dl>
         </div>
       </div>
@@ -845,63 +750,74 @@
   <section id="skills">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">05 — Technical skills</div>
-        <h2>The stack, by category.</h2>
+        <div class="eyebrow"><span class="lang-en">05 — Technical skills</span><span class="lang-id" hidden>05 — Keahlian teknis</span></div>
+        <h2><span class="lang-en">The stack, by category.</span><span class="lang-id" hidden>Perangkat &amp; keahlian, per kategori.</span></h2>
       </div>
       <div class="skill-cats reveal">
         <div class="skill-cat">
-          <div class="eyebrow">Operating systems</div>
+          <div class="eyebrow"><span class="lang-en">Operating systems</span><span class="lang-id" hidden>Sistem operasi</span></div>
           <div class="skill-tags"><span>Windows 7</span><span>Windows 10</span><span>Windows 11</span></div>
         </div>
         <div class="skill-cat">
-          <div class="eyebrow">Networking</div>
+          <div class="eyebrow"><span class="lang-en">Networking</span><span class="lang-id" hidden>Jaringan</span></div>
           <div class="skill-tags"><span>LAN / WAN</span><span>IP CCTV</span></div>
         </div>
         <div class="skill-cat">
-          <div class="eyebrow">Programming</div>
+          <div class="eyebrow"><span class="lang-en">Programming</span><span class="lang-id" hidden>Pemrograman</span></div>
           <div class="skill-tags"><span>PHP</span><span>MySQL</span></div>
         </div>
         <div class="skill-cat">
-          <div class="eyebrow">Software / ERP</div>
+          <div class="eyebrow"><span class="lang-en">Software / ERP</span><span class="lang-id" hidden>Software / ERP</span></div>
           <div class="skill-tags"><span>Odoo ERP (v16 &amp; v19)</span><span>Adobe Photoshop</span><span>Microsoft Office</span></div>
         </div>
         <div class="skill-cat">
-          <div class="eyebrow">Operational skills</div>
-          <div class="skill-tags"><span>Troubleshooting</span><span>System Integration</span><span>RFID Administration</span><span>SCADA Operations</span></div>
+          <div class="eyebrow"><span class="lang-en">Operational skills</span><span class="lang-id" hidden>Keahlian operasional</span></div>
+          <div class="skill-tags">
+            <span>Troubleshooting</span>
+            <span><span class="lang-en">System Integration</span><span class="lang-id" hidden>Integrasi Sistem</span></span>
+            <span><span class="lang-en">RFID Administration</span><span class="lang-id" hidden>Administrasi RFID</span></span>
+            <span><span class="lang-en">SCADA Operations</span><span class="lang-id" hidden>Operasional SCADA</span></span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="credentials">
+  <section id="credentials" class="alt">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">06 — Credentials</div>
-        <h2>Education, certifications &amp; languages.</h2>
+        <div class="eyebrow"><span class="lang-en">06 — Credentials</span><span class="lang-id" hidden>06 — Kredensial</span></div>
+        <h2><span class="lang-en">Education, certifications &amp; languages.</span><span class="lang-id" hidden>Pendidikan, sertifikasi &amp; bahasa.</span></h2>
       </div>
       <div class="cred-grid reveal">
         <div class="cred">
-          <div class="eyebrow">Education</div>
+          <div class="eyebrow"><span class="lang-en">Education</span><span class="lang-id" hidden>Pendidikan</span></div>
           <div class="cred-item">
-            <div class="t">Bachelor of Computer Science (S1)</div>
+            <div class="t"><span class="lang-en">Bachelor of Computer Science (S1)</span><span class="lang-id" hidden>Sarjana Ilmu Komputer (S1)</span></div>
             <div class="s">Universitas Mulia Balikpapan · 2014 – 2019</div>
           </div>
         </div>
         <div class="cred">
-          <div class="eyebrow">Certifications</div>
+          <div class="eyebrow"><span class="lang-en">Certifications</span><span class="lang-id" hidden>Sertifikasi</span></div>
           <div class="cred-item">
             <div class="t">IDT Certificate Academy</div>
             <div class="s">PT. Jaya Teknik Indonesia / Ipsotek Ltd, Jakarta · 2017</div>
           </div>
           <div class="cred-item">
-            <div class="t">ISO 9001 / 14001 / 45001 — Awareness &amp; Internal Audit</div>
+            <div class="t"><span class="lang-en">ISO 9001 / 14001 / 45001 — Awareness &amp; Internal Audit</span><span class="lang-id" hidden>ISO 9001 / 14001 / 45001 — Awareness &amp; Audit Internal</span></div>
             <div class="s">Standard Training Indonesia · Nov 2024</div>
           </div>
         </div>
         <div class="cred">
-          <div class="eyebrow">Languages</div>
-          <div class="lang-row"><span>Indonesian</span><div class="bar"><i style="width:100%"></i></div></div>
-          <div class="lang-row"><span>English</span><div class="bar"><i style="width:78%"></i></div></div>
+          <div class="eyebrow"><span class="lang-en">Languages</span><span class="lang-id" hidden>Bahasa</span></div>
+          <div class="lang-row">
+            <span><span class="lang-en">Indonesian</span><span class="lang-id" hidden>Bahasa Indonesia</span></span>
+            <div class="bar"><i style="width:100%"></i></div>
+          </div>
+          <div class="lang-row">
+            <span><span class="lang-en">English</span><span class="lang-id" hidden>Bahasa Inggris</span></span>
+            <div class="bar"><i style="width:78%"></i></div>
+          </div>
         </div>
       </div>
     </div>
@@ -910,13 +826,22 @@
   <section id="achievements">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">07 — Highlights</div>
-        <h2>A few things worth flagging directly.</h2>
+        <div class="eyebrow"><span class="lang-en">07 — Highlights</span><span class="lang-id" hidden>07 — Pencapaian</span></div>
+        <h2><span class="lang-en">A few things worth flagging directly.</span><span class="lang-id" hidden>Beberapa pencapaian yang layak disorot.</span></h2>
       </div>
       <div class="ach-list reveal">
-        <div class="ach"><p>Managed and optimized the Odoo Ver 16 ERP system at PT. JALA Akuakultur, improving operational efficiency across departments.</p></div>
-        <div class="ach"><p>Played a key role in installing and maintaining 264 cameras at Soekarno‑Hatta Airport Terminal 3.</p></div>
-        <div class="ach"><p>Delivered critical IT support for Maybank Indonesia, keeping network and system operations seamless across multiple branches.</p></div>
+        <div class="ach">
+          <p class="lang-en">Managed and optimized the Odoo Ver 16 ERP system at PT. JALA Akuakultur, improving operational efficiency across departments.</p>
+          <p class="lang-id" hidden>Mengelola dan mengoptimalkan sistem ERP Odoo versi 16 di PT. JALA Akuakultur, meningkatkan efisiensi operasional di berbagai departemen.</p>
+        </div>
+        <div class="ach">
+          <p class="lang-en">Played a key role in installing and maintaining 264 cameras at Soekarno‑Hatta Airport Terminal 3.</p>
+          <p class="lang-id" hidden>Berperan penting dalam instalasi dan pemeliharaan 264 kamera di Terminal 3 Bandara Soekarno‑Hatta.</p>
+        </div>
+        <div class="ach">
+          <p class="lang-en">Delivered critical IT support for Maybank Indonesia, keeping network and system operations seamless across multiple branches.</p>
+          <p class="lang-id" hidden>Memberikan dukungan IT krusial untuk Maybank Indonesia, menjaga operasional jaringan dan sistem tetap lancar di berbagai cabang.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -927,26 +852,33 @@
   <div class="wrap">
     <div class="contact-grid">
       <div class="reveal">
-        <div class="eyebrow">08 — Contact</div>
-        <h2>Let's talk about<br>your systems.</h2>
-        <p class="lede">Open to ERP, IT infrastructure and technical support roles. Based in Bantul, Yogyakarta — happy to discuss on‑site, hybrid or remote setups.</p>
+        <div class="eyebrow"><span class="lang-en">08 — Contact</span><span class="lang-id" hidden>08 — Kontak</span></div>
+        <h2>
+          <span class="lang-en">Let's talk about<br>your systems.</span>
+          <span class="lang-id" hidden>Mari bicara soal<br>sistem Anda.</span>
+        </h2>
+        <p class="lede lang-en">Open to ERP, IT infrastructure and technical support roles. Based in Bantul, Yogyakarta — happy to discuss on‑site, hybrid or remote setups.</p>
+        <p class="lede lang-id" hidden>Terbuka untuk peran ERP, infrastruktur IT, dan technical support. Berdomisili di Bantul, Yogyakarta — siap mendiskusikan kerja on‑site, hybrid, atau remote.</p>
       </div>
       <div class="contact-list reveal">
         <a href="mailto:abdulgafur955@gmail.com"><span class="k">Email</span><span>abdulgafur955@gmail.com</span></a>
-        <a href="tel:+6289690233685"><span class="k">Phone</span><span>0896‑9023‑3685</span></a>
+        <a href="tel:+6289690233685"><span class="k"><span class="lang-en">Phone</span><span class="lang-id" hidden>Telepon</span></span><span>0896‑9023‑3685</span></a>
         <a href="https://www.linkedin.com/in/abdul-gafur-851504190" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span>/in/abdul-gafur‑851504190</span></a>
         <a href="https://github.com/abdgafur17" target="_blank" rel="noopener"><span class="k">GitHub</span><span>@abdgafur17</span></a>
-        <div class="row"><span class="k">Location</span><span>Bantul, DI Yogyakarta, ID</span></div>
+        <div class="row"><span class="k"><span class="lang-en">Location</span><span class="lang-id" hidden>Lokasi</span></span><span>Bantul, DI Yogyakarta, ID</span></div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© <span id="year"></span> Abdul Gafur. Built with HTML, CSS &amp; JS.</span>
-      <a class="backtotop" href="#top">↑ Back to top</a>
+      <span>© <span id="year"></span> Abdul Gafur. <span class="lang-en">Built with HTML, CSS &amp; JS.</span><span class="lang-id" hidden>Dibuat dengan HTML, CSS &amp; JS.</span></span>
+      <a class="backtotop" href="#top">↑ <span class="lang-en">Back to top</span><span class="lang-id" hidden>Kembali ke atas</span></a>
     </div>
   </div>
 </footer>
 
 <script>
+  var TITLE_EN = "Abdul Gafur — ERP Executive & IT Infrastructure Specialist";
+  var TITLE_ID = "Abdul Gafur — ERP Executive & Spesialis Infrastruktur IT";
+
   // live clock (Asia/Jakarta)
   function tick(){
     var el = document.getElementById('clock');
@@ -976,16 +908,48 @@
     });
   });
 
+  // ===== language toggle =====
+  var currentLang = 'en';
+  var rolesOpen = false;
+
+  function renderMoreToggle(){
+    document.querySelectorAll('#moreToggle .mt-closed, #moreToggle .mt-open').forEach(function(el){
+      var isLangMatch = el.classList.contains('lang-' + currentLang);
+      var isStateMatch = rolesOpen ? el.classList.contains('mt-open') : el.classList.contains('mt-closed');
+      el.hidden = !(isLangMatch && isStateMatch);
+    });
+  }
+
+  function setLang(lang){
+    currentLang = (lang === 'id') ? 'id' : 'en';
+    document.documentElement.lang = currentLang;
+    document.querySelectorAll('.lang-en').forEach(function(el){ el.hidden = (currentLang !== 'en'); });
+    document.querySelectorAll('.lang-id').forEach(function(el){ el.hidden = (currentLang !== 'id'); });
+    renderMoreToggle();
+    document.querySelectorAll('[data-lang-btn]').forEach(function(btn){
+      btn.classList.toggle('active', btn.dataset.langBtn === currentLang);
+    });
+    document.title = (currentLang === 'id') ? TITLE_ID : TITLE_EN;
+    try{ localStorage.setItem('portfolio-lang', currentLang); }catch(e){}
+  }
+
+  document.querySelectorAll('[data-lang-btn]').forEach(function(btn){
+    btn.addEventListener('click', function(){ setLang(btn.dataset.langBtn); });
+  });
+
+  var savedLang = null;
+  try{ savedLang = localStorage.getItem('portfolio-lang'); }catch(e){}
+  setLang(savedLang === 'id' ? 'id' : 'en');
+
   // earlier-roles toggle
   var moreToggle = document.getElementById('moreToggle');
   var moreRoles = document.getElementById('more-roles');
   moreToggle.addEventListener('click', function(){
-    var open = moreRoles.classList.toggle('open');
-    moreToggle.classList.toggle('open', open);
-    moreToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    moreToggle.innerHTML = open
-      ? 'Hide earlier roles <span class="chev">▾</span>'
-      : 'Show 6 earlier roles (2014 – 2021) <span class="chev">▾</span>';
+    rolesOpen = !rolesOpen;
+    moreRoles.classList.toggle('open', rolesOpen);
+    moreToggle.classList.toggle('open', rolesOpen);
+    moreToggle.setAttribute('aria-expanded', rolesOpen ? 'true' : 'false');
+    renderMoreToggle();
   });
 
   // scroll reveal

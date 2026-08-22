@@ -1,158 +1,2438 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abdul Gafur - Portfolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f1f1f1;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(135deg, #2c3e50, #4ca1af);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      position: relative;
-    }
-    header img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid white;
-    }
-    .language-switcher {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-    }
-    .language-switcher img {
-      width: 30px;
-      height: 20px;
-      margin-left: 10px;
-      cursor: pointer;
-    }
-    main {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-    h2 {
-      color: #2c3e50;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 0.3rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Abdul Gafur - ERP Executive, Odoo Functional Consultant and IT Professional with 8+ years of experience.">
+
+    <meta name="keywords"
+          content="Abdul Gafur, Odoo, ERP, IT Support, Odoo Functional, ERP Executive, IT Professional">
+
+    <meta name="author"
+          content="Abdul Gafur">
+
+    <title>Abdul Gafur | ERP Executive & Odoo Functional</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        :root {
+            --bg: #f6f8fb;
+            --surface: #ffffff;
+            --surface-soft: #f0f4f8;
+            --text: #152033;
+            --text-soft: #637083;
+            --primary: #0f766e;
+            --primary-dark: #0b5f59;
+            --accent: #14b8a6;
+            --border: #e5eaf0;
+            --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+            --radius: 22px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(255,255,255,.82);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(229,234,240,.8);
+        }
+
+        .nav-inner {
+            height: 74px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: "Space Grotesk", sans-serif;
+            font-weight: 700;
+            font-size: 21px;
+            letter-spacing: -.5px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-soft);
+            transition: .25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-btn,
+        .theme-btn {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: .25s;
+        }
+
+        .lang-btn:hover,
+        .theme-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding-top: 100px;
+
+            background:
+                radial-gradient(circle at 80% 20%, rgba(20,184,166,.13), transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(15,118,110,.08), transparent 30%),
+                var(--bg);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            background: rgba(15,118,110,.08);
+            color: var(--primary);
+
+            padding: 8px 14px;
+            border-radius: 999px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            margin-bottom: 22px;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: clamp(46px, 6vw, 76px);
+            line-height: 1.02;
+            letter-spacing: -3px;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            color: var(--text-soft);
+            font-size: 16px;
+            line-height: 1.8;
+
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            padding: 13px 20px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: .25s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 25px rgba(15,118,110,.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--surface);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           PROFILE CARD
+        ========================== */
+
+        .profile-card {
+            position: relative;
+
+            background: var(--surface);
+
+            padding: 34px;
+
+            border-radius: 28px;
+
+            box-shadow: var(--shadow);
+
+            border: 1px solid var(--border);
+        }
+
+        .profile-image {
+            width: 145px;
+            height: 145px;
+
+            margin: auto auto 25px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(135deg,
+                #0f766e,
+                #14b8a6);
+
+            color: white;
+
+            font-family: "Space Grotesk";
+            font-size: 48px;
+            font-weight: 700;
+
+            border: 7px solid white;
+
+            box-shadow:
+                0 0 0 1px var(--border),
+                0 20px 45px rgba(15,118,110,.2);
+        }
+
+        /*
+        Jika ingin menggunakan foto sendiri:
+
+        Ganti div .profile-image menjadi:
+
+        <img src="profile.jpg"
+             class="profile-image"
+             alt="Abdul Gafur">
+
+        Letakkan profile.jpg satu folder dengan index.html.
+        */
+
+        .profile-name {
+            text-align: center;
+
+            font-family: "Space Grotesk";
+            font-size: 25px;
+            font-weight: 700;
+
+            margin-bottom: 5px;
+        }
+
+        .profile-role {
+            text-align: center;
+            color: var(--primary);
+
+            font-size: 14px;
+            font-weight: 700;
+
+            margin-bottom: 25px;
+        }
+
+        .profile-info {
+            display: grid;
+            gap: 13px;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+
+            color: var(--text-soft);
+
+            font-size: 13px;
+        }
+
+        .info-icon {
+            width: 32px;
+            height: 32px;
+
+            flex: 0 0 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--surface-soft);
+
+            border-radius: 9px;
+        }
+
+        /* =========================
+           STATS
+        ========================== */
+
+        .stats {
+            padding: 30px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 16px;
+        }
+
+        .stat {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            transition: .25s;
+        }
+
+        .stat:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-number {
+            font-family: "Space Grotesk";
+
+            font-size: 31px;
+            font-weight: 700;
+
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-soft);
+        }
+
+        /* =========================
+           SECTION
+        ========================== */
+
+        section {
+            padding: 105px 0;
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin-bottom: 48px;
+        }
+
+        .section-label {
+            color: var(--primary);
+
+            font-size: 13px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-family: "Space Grotesk";
+
+            font-size: clamp(32px, 4vw, 46px);
+
+            line-height: 1.15;
+
+            letter-spacing: -1.5px;
+
+            margin-bottom: 14px;
+        }
+
+        .section-description {
+            color: var(--text-soft);
+        }
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .about-card {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            padding: 32px;
+
+            box-shadow: 0 10px 35px rgba(15,23,42,.04);
+        }
+
+        .about-card h3 {
+            font-family: "Space Grotesk";
+            margin-bottom: 14px;
+            font-size: 21px;
+        }
+
+        .about-card p {
+            color: var(--text-soft);
+            font-size: 14px;
+        }
+
+        .competency-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            padding: 8px 12px;
+
+            background: var(--surface-soft);
+
+            border-radius: 8px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            color: var(--text-soft);
+        }
+
+        /* =========================
+           EXPERIENCE
+        ========================== */
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            left: 10px;
+            top: 5px;
+            bottom: 5px;
+
+            width: 1px;
+
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+
+            padding-left: 45px;
+
+            margin-bottom: 42px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+
+            left: 4px;
+            top: 7px;
+
+            width: 13px;
+            height: 13px;
+
+            background: var(--primary);
+
+            border: 3px solid var(--bg);
+
+            border-radius: 50%;
+
+            box-shadow: 0 0 0 1px var(--primary);
+        }
+
+        .timeline-date {
+            display: inline-block;
+
+            color: var(--primary);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-family: "Space Grotesk";
+
+            font-size: 20px;
+            font-weight: 700;
+
+            margin-bottom: 3px;
+        }
+
+        .timeline-company {
+            color: var(--text-soft);
+
+            font-size: 13px;
+            font-weight: 600;
+
+            margin-bottom: 13px;
+        }
+
+        .timeline-description {
+            color: var(--text-soft);
+
+            font-size: 14px;
+
+            max-width: 850px;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================== */
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            padding: 30px;
+
+            transition: .3s;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            right: -35px;
+            top: -35px;
+
+            background: rgba(20,184,166,.08);
+
+            border-radius: 50%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .project-number {
+            font-family: "Space Grotesk";
+
+            color: var(--primary);
+
+            font-size: 13px;
+            font-weight: 800;
+
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-family: "Space Grotesk";
+
+            font-size: 22px;
+
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: var(--text-soft);
+
+            font-size: 14px;
+
+            margin-bottom: 18px;
+        }
+
+        .project-result {
+            padding: 13px;
+
+            background: var(--surface-soft);
+
+            border-radius: 10px;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 18px;
+        }
+
+        .skill-card {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: 25px;
+        }
+
+        .skill-icon {
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--surface-soft);
+
+            border-radius: 12px;
+
+            margin-bottom: 18px;
+
+            font-size: 20px;
+        }
+
+        .skill-card h3 {
+            font-family: "Space Grotesk";
+
+            font-size: 18px;
+
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: var(--text-soft);
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           ACHIEVEMENTS
+        ========================== */
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 18px;
+        }
+
+        .achievement {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            padding: 28px;
+
+            border-radius: 18px;
+        }
+
+        .achievement-icon {
+            font-size: 27px;
+            margin-bottom: 15px;
+        }
+
+        .achievement h3 {
+            font-family: "Space Grotesk";
+            font-size: 18px;
+            margin-bottom: 9px;
+        }
+
+        .achievement p {
+            font-size: 13px;
+            color: var(--text-soft);
+        }
+
+        /* =========================
+           EDUCATION
+        ========================== */
+
+        .education-card {
+            background:
+                linear-gradient(135deg,
+                #0f766e,
+                #115e59);
+
+            color: white;
+
+            border-radius: 26px;
+
+            padding: 40px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            box-shadow: 0 20px 50px rgba(15,118,110,.18);
+        }
+
+        .education-label {
+            opacity: .7;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            margin-bottom: 7px;
+        }
+
+        .education-card h3 {
+            font-family: "Space Grotesk";
+
+            font-size: 25px;
+
+            margin-bottom: 5px;
+        }
+
+        .education-card p {
+            opacity: .8;
+
+            font-size: 14px;
+        }
+
+        .education-year {
+            font-family: "Space Grotesk";
+
+            font-size: 32px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact {
+            padding-bottom: 70px;
+        }
+
+        .contact-card {
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 28px;
+
+            padding: 50px;
+
+            text-align: center;
+
+            box-shadow: var(--shadow);
+        }
+
+        .contact-card h2 {
+            font-family: "Space Grotesk";
+
+            font-size: clamp(32px,4vw,46px);
+
+            letter-spacing: -1.5px;
+
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            color: var(--text-soft);
+
+            max-width: 650px;
+
+            margin: 0 auto 28px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            border-top: 1px solid var(--border);
+
+            padding: 30px 0;
+
+            color: var(--text-soft);
+
+            font-size: 12px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* =========================
+           DARK MODE
+        ========================== */
+
+        body.dark {
+            --bg: #0b1117;
+            --surface: #111a22;
+            --surface-soft: #18232d;
+            --text: #edf6f5;
+            --text-soft: #9eafb8;
+            --border: #23313c;
+            --shadow: 0 20px 60px rgba(0,0,0,.25);
+        }
+
+        body.dark .navbar {
+            background: rgba(11,17,23,.82);
+        }
+
+        body.dark .profile-image {
+            border-color: var(--surface);
+        }
+
+        /* =========================
+           SCROLL REVEAL
+        ========================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: .7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .profile-card {
+                max-width: 500px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .about-grid,
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid,
+            .achievement-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: min(100% - 28px,1120px);
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .stats-grid,
+            .skills-grid,
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-card {
+                padding: 30px 20px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
-  <header>
-    <img src="abd2.jpg" alt="Abdul Gafur Profile Photo">
-    <h1>Abdul Gafur</h1>
-    <p class="lang lang-en">ERP Executive | IT Specialist</p>
-    <p class="lang lang-id hidden">ERP Eksekutif | Spesialis TI</p>
-    <div class="language-switcher">
-      <img src="https://flagcdn.com/w40/gb.png" alt="English" onclick="setLanguage('en')">
-      <img src="https://flagcdn.com/w40/id.png" alt="Bahasa Indonesia" onclick="setLanguage('id')">
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+
+    <div class="container nav-inner">
+
+        <a href="#home" class="logo">
+            AG<span>.</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="#about">About</a>
+
+            <a href="#experience">Experience</a>
+
+            <a href="#projects">Projects</a>
+
+            <a href="#skills">Skills</a>
+
+            <a href="#contact">Contact</a>
+
+        </div>
+
+        <div class="nav-actions">
+
+            <button
+                class="lang-btn"
+                id="languageBtn"
+                title="Change Language">
+                ID
+            </button>
+
+            <button
+                class="theme-btn"
+                id="themeBtn"
+                title="Dark Mode">
+                ◐
+            </button>
+
+        </div>
+
     </div>
-  </header>
-  <main>
-    <section>
-      <h2 class="lang lang-en">Professional Summary</h2>
-      <h2 class="lang lang-id hidden">Ringkasan Profesional</h2>
-      <p class="lang lang-en">
-        IT professional with over 8 years of experience specializing in ERP system management, SCADA operations, IT infrastructure, and RFID administration. Proven track record in optimizing technology systems across various industries, including aviation, mining, and aquaculture.<br>
-        Adept at analyzing, managing, and enhancing operational efficiency through strategic technological solutions. Currently serving as an ERP Executive at PT. JALA Akuakultur Lestari Alamku, responsible for managing and implementing Odoo ERP systems to streamline business operations.
-      </p>
-      <p class="lang lang-id hidden">
-        Profesional TI dengan pengalaman lebih dari 8 tahun di bidang manajemen sistem ERP, operasi SCADA, infrastruktur TI, dan administrasi RFID. Memiliki rekam jejak yang terbukti dalam mengoptimalkan sistem teknologi di berbagai industri, termasuk penerbangan, pertambangan, dan akuakultur.<br>
-        Terampil dalam menganalisis, mengelola, dan meningkatkan efisiensi operasional melalui solusi teknologi strategis. Saat ini bekerja sebagai ERP Executive di PT. JALA Akuakultur Lestari Alamku, bertanggung jawab atas manajemen dan implementasi sistem Odoo ERP untuk menyederhanakan operasional bisnis.
-      </p>
-    </section>
 
-    <section>
-      <h2 class="lang lang-en">Professional Experience</h2>
-      <h2 class="lang lang-id hidden">Pengalaman Profesional</h2>
-      <ul class="lang lang-en">
-        <li><strong>Des 2025 – Present  | CV Lozy </strong> – IT & Stystem Support</li>
-        <li><strong>Feb 2024 – Des 2025 | PT. JALA Akuakultur Lestari Alamku</strong> – ERP Executive</li>
-        <li><strong>Sep 2023 – Nov 2023 | PT. INPARTS PRIMA SUKSES</strong> – IT Support Engineer</li>
-        <li><strong>Sep 2021 – Sep 2023 | PT. Cardig Aero Services Tbk (CAS Group)</strong> – IT Mining Support Officer</li>
-        <li><strong>Jun 2021 – Aug 2021 | PT. Pamora Coffee Indonesia</strong> – IT Support Technician</li>
-        <li><strong>May 2020 – Jun 2021 | PT. Infomedia Nusantara (Maybank Indonesia)</strong> – Technical Infrastructure Engineer</li>
-        <li><strong>Aug 2019 – May 2020 | PT. Tripatra Engineers and Constructors</strong> – IT Support & RFID Admin</li>
-        <li><strong>Feb 2019 – Jun 2019 | PT. Jaya Teknik Indonesia</strong> – Project Engineer</li>
-        <li><strong>Nov 2014 – Jan 2019 | PT. Angkasa Pura Support / PT. Jaya Teknik Indonesia</strong> – SCADA Operator</li>
-      </ul>
-      <ul class="lang lang-id hidden">
-        <li><strong>Des 2025 – Present  | CV Lozy </strong> – IT & Stystem Support</li>
-        <li><strong>Feb 2024 – Sekarang | PT. JALA Akuakultur Lestari Alamku</strong> – ERP Eksekutif</li>
-        <li><strong>Sep 2023 – Nov 2023 | PT. INPARTS PRIMA SUKSES</strong> – Teknisi Dukungan TI</li>
-        <li><strong>Sep 2021 – Sep 2023 | PT. Cardig Aero Services Tbk (CAS Group)</strong> – Petugas Dukungan TI Pertambangan</li>
-        <li><strong>Jun 2021 – Aug 2021 | PT. Pamora Coffee Indonesia</strong> – Teknisi Dukungan TI</li>
-        <li><strong>May 2020 – Jun 2021 | PT. Infomedia Nusantara (Maybank Indonesia)</strong> – Teknisi Infrastruktur TI</li>
-        <li><strong>Aug 2019 – May 2020 | PT. Tripatra Engineers and Constructors</strong> – Dukungan TI & Admin RFID</li>
-        <li><strong>Feb 2019 – Jun 2019 | PT. Jaya Teknik Indonesia</strong> – Project Engineer</li>
-        <li><strong>Nov 2014 – Jan 2019 | PT. Angkasa Pura Support / PT. Jaya Teknik Indonesia</strong> – Operator SCADA</li>
-      </ul>
-    </section>
+</nav>
 
-    <section>
-      <h2 class="lang lang-en">Project Experience (Odoo)</h2>
-      <h2 class="lang lang-id hidden">Pengalaman Proyek (Odoo)</h2>
-      <ul class="lang lang-en">
-        <li><strong>Helpdesk Implementation – JALA</strong>: Led and socialized the default helpdesk module adaptation. Result: Clear SLA and documented resolution handling.</li>
-        <li><strong>Approval Delegation</strong>: Designed delegation logic for managerial approval. Result: Substitutions during leave are now structured.</li>
-        <li><strong>Inventory Product Input Management</strong>: Centralized product input process and access control. Result: All items managed under ERP Executive supervision.</li>
-        <li><strong>Manufacturing Optimization</strong>: Adjusted manufacturing module to align with real processes. Result: Temporary manufacturing flow achieved; ready for further improvement.</li>
-      </ul>
-      <ul class="lang lang-id hidden">
-        <li><strong>Implementasi Helpdesk – JALA</strong>: Memimpin dan mensosialisasikan adaptasi modul helpdesk bawaan. Hasil: SLA yang jelas dan penanganan kendala terdokumentasi dengan baik.</li>
-        <li><strong>Delegasi Persetujuan</strong>: Merancang logika delegasi untuk persetujuan manajerial. Hasil: Pengganti saat cuti kini tersusun secara sistematis.</li>
-        <li><strong>Manajemen Input Produk di Inventory</strong>: Memusatkan proses input produk dan pengendalian akses. Hasil: Semua item dikelola di bawah pengawasan ERP Executive.</li>
-        <li><strong>Optimasi Manufaktur</strong>: Menyesuaikan modul manufaktur agar selaras dengan proses riil. Hasil: Alur produksi sementara tercapai dan siap untuk peningkatan lebih lanjut.</li>
-      </ul>
-    </section>
 
-    <section>
-      <h2 class="lang lang-en">Technical Skills</h2>
-      <h2 class="lang lang-id hidden">Keahlian Teknis</h2>
-      <ul>
-        <li><strong>Operating Systems:</strong> Windows 7, 10, 11</li>
-        <li><strong>Networking:</strong> LAN/WAN, IP CCTV</li>
-        <li><strong>Programming:</strong> PHP, MySQL</li>
-        <li><strong>Software:</strong> Odoo ERP (Ver 16 & 19), Adobe Photoshop, Microsoft Office</li>
-        <li><strong>Other Skills:</strong> Troubleshooting, System Integration, RFID Administration, SCADA Operations</li>
-      </ul>
-    </section>
+<!-- =========================
+     HERO
+========================= -->
 
-    <section>
-      <h2 class="lang lang-en">Certifications</h2>
-      <h2 class="lang lang-id hidden">Sertifikasi</h2>
-      <ul>
-        <li>IDT Certificate Academy – PT. Jaya Teknik Indonesia / Ipsotek Ltd, Jakarta (2017)</li>
-        <li>In-house Training Awareness & Internal Audit ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 – Standard Training Indonesia (Nov 2024)</li>
-      </ul>
-    </section>
-  </main>
+<header class="hero" id="home">
 
-  <script>
-    function setLanguage(lang) {
-      document.querySelectorAll('.lang').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.remove('hidden'));
+    <div class="container hero-grid">
+
+        <div class="hero-content reveal">
+
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+
+                Available for Professional Opportunities
+            </div>
+
+            <h1>
+                Abdul<br>
+                <span>Gafur.</span>
+            </h1>
+
+            <div class="hero-subtitle">
+                ERP Executive · Odoo Functional · IT Professional
+            </div>
+
+            <p class="hero-description">
+
+                IT professional with 8+ years of experience in
+                ERP systems, Odoo, IT infrastructure, SCADA,
+                RFID administration, system integration and
+                operational technology.
+
+                I focus on turning technology into practical
+                solutions that improve business processes.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#projects"
+                    class="btn btn-primary">
+
+                    Explore My Work →
+                </a>
+
+                <a
+                    href="Resume-CV-Abdul-Gafur-2026.pdf"
+                    class="btn btn-secondary"
+                    download>
+
+                    ↓ Download CV
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/abdulgafur-851504190"
+                    target="_blank"
+                    class="btn btn-secondary">
+
+                    LinkedIn ↗
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROFILE -->
+
+        <div class="profile-card reveal">
+
+            <div class="profile-image">
+                AG
+            </div>
+
+            <div class="profile-name">
+                Abdul Gafur
+            </div>
+
+            <div class="profile-role">
+                ERP Executive / Odoo Functional
+            </div>
+
+            <div class="profile-info">
+
+                <div class="info-row">
+
+                    <div class="info-icon">📍</div>
+
+                    <div>
+                        Bantul, Daerah Istimewa Yogyakarta,
+                        Indonesia
+                    </div>
+
+                </div>
+
+                <div class="info-row">
+
+                    <div class="info-icon">✉</div>
+
+                    <div>
+                        abdulgafur955@gmail.com
+                    </div>
+
+                </div>
+
+                <div class="info-row">
+
+                    <div class="info-icon">☎</div>
+
+                    <div>
+                        0896-9023-3685
+                    </div>
+
+                </div>
+
+                <div class="info-row">
+
+                    <div class="info-icon">💼</div>
+
+                    <div>
+                        ERP · Odoo · IT Infrastructure
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<div class="stats">
+
+    <div class="container stats-grid">
+
+        <div class="stat reveal">
+
+            <div class="stat-number">8+</div>
+
+            <div class="stat-label">
+                Years of IT Experience
+            </div>
+
+        </div>
+
+        <div class="stat reveal">
+
+            <div class="stat-number">10+</div>
+
+            <div class="stat-label">
+                Professional Roles / Projects
+            </div>
+
+        </div>
+
+        <div class="stat reveal">
+
+            <div class="stat-number">264</div>
+
+            <div class="stat-label">
+                CCTV Cameras Installed at Airport
+            </div>
+
+        </div>
+
+        <div class="stat reveal">
+
+            <div class="stat-number">ERP</div>
+
+            <div class="stat-label">
+                Odoo Functional Experience
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <div class="section-label">
+                About Me
+            </div>
+
+            <h2 class="section-title">
+                Technology with a
+                business mindset.
+            </h2>
+
+            <p class="section-description">
+
+                My experience combines IT technical support,
+                ERP management and business process improvement.
+                This allows me to understand technology not only
+                from the technical side, but also from the
+                perspective of business users and operations.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-card reveal">
+
+                <h3>
+                    Professional Summary
+                </h3>
+
+                <p>
+
+                    I have over 8 years of experience specializing
+                    in ERP system management, SCADA operations,
+                    IT infrastructure and RFID administration.
+
+                    My career spans industries including aviation,
+                    mining, banking support, aquaculture and
+                    fashion/business operations.
+
+                    Currently, my focus is ERP and Odoo functional
+                    implementation, system support and process
+                    optimization.
+
+                </p>
+
+            </div>
+
+
+            <div class="about-card reveal">
+
+                <h3>
+                    Core Competencies
+                </h3>
+
+                <div class="competency-list">
+
+                    <span class="tag">
+                        Odoo ERP
+                    </span>
+
+                    <span class="tag">
+                        ERP Management
+                    </span>
+
+                    <span class="tag">
+                        IT Infrastructure
+                    </span>
+
+                    <span class="tag">
+                        System Integration
+                    </span>
+
+                    <span class="tag">
+                        IT Support
+                    </span>
+
+                    <span class="tag">
+                        Database
+                    </span>
+
+                    <span class="tag">
+                        Network
+                    </span>
+
+                    <span class="tag">
+                        SCADA
+                    </span>
+
+                    <span class="tag">
+                        RFID
+                    </span>
+
+                    <span class="tag">
+                        Troubleshooting
+                    </span>
+
+                    <span class="tag">
+                        Reporting
+                    </span>
+
+                    <span class="tag">
+                        SOP & Documentation
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EXPERIENCE
+========================= -->
+
+<section id="experience">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <div class="section-label">
+                Career
+            </div>
+
+            <h2 class="section-title">
+                Professional Experience
+            </h2>
+
+            <p class="section-description">
+
+                More than eight years building, supporting and
+                improving technology systems across different
+                operational environments.
+
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+            <!-- 1 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    DEC 2025 — PRESENT
+                </div>
+
+                <div class="timeline-title">
+                    IT & System Support
+                </div>
+
+                <div class="timeline-company">
+                    CV. Lozy Hijab
+                </div>
+
+                <div class="timeline-description">
+
+                    Responsible for IT devices, applications,
+                    information systems, ERP Odoo, OMS, WMS,
+                    Talenta, Olsera, Accurate, networking,
+                    backups, system security, IT documentation
+                    and internal audit support.
+
+                </div>
+
+            </div>
+
+
+            <!-- 2 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    FEB 2024 — DEC 2025
+                </div>
+
+                <div class="timeline-title">
+                    ERP Executive / Odoo Functional
+                </div>
+
+                <div class="timeline-company">
+                    PT. JALA Akuakultur Lestari Alamku
+                </div>
+
+                <div class="timeline-description">
+
+                    Managed Odoo ERP, customized modules,
+                    maintained data integrity, supported users,
+                    conducted training, integrated third-party
+                    applications and generated reports for
+                    business decision-making.
+
+                </div>
+
+            </div>
+
+
+            <!-- 3 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    SEP 2023 — NOV 2023
+                </div>
+
+                <div class="timeline-title">
+                    IT Support Engineer
+                </div>
+
+                <div class="timeline-company">
+                    PT. INPARTS PRIMA SUKSES
+                </div>
+
+                <div class="timeline-description">
+
+                    Hardware, software and network troubleshooting,
+                    including support for the Odoo reporting system.
+
+                </div>
+
+            </div>
+
+
+            <!-- 4 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    SEP 2021 — SEP 2023
+                </div>
+
+                <div class="timeline-title">
+                    IT Mining Support Officer
+                </div>
+
+                <div class="timeline-company">
+                    PT. Cardig Aero Services Tbk — CAS Group
+                </div>
+
+                <div class="timeline-description">
+
+                    Provided IT support for mining operations in
+                    Kalimantan, including equipment, software,
+                    network systems and Odoo reporting support.
+
+                </div>
+
+            </div>
+
+
+            <!-- 5 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    JUN 2021 — AUG 2021
+                </div>
+
+                <div class="timeline-title">
+                    IT Support Technician
+                </div>
+
+                <div class="timeline-company">
+                    PT. Pamora Coffee Indonesia
+                </div>
+
+                <div class="timeline-description">
+
+                    Managed Odoo as a database administrator,
+                    maintained sales and purchase data reports
+                    and performed hardware/software troubleshooting.
+
+                </div>
+
+            </div>
+
+
+            <!-- 6 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    MAY 2020 — JUN 2021
+                </div>
+
+                <div class="timeline-title">
+                    Technical Infrastructure Engineer
+                </div>
+
+                <div class="timeline-company">
+                    PT. Infomedia Nusantara — Maybank Indonesia
+                </div>
+
+                <div class="timeline-description">
+
+                    Installed, updated and evaluated computer
+                    systems, software and networks for Maybank
+                    branches in Balikpapan.
+
+                </div>
+
+            </div>
+
+
+            <!-- 7 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    AUG 2019 — MAY 2020
+                </div>
+
+                <div class="timeline-title">
+                    IT Support & RFID Admin
+                </div>
+
+                <div class="timeline-company">
+                    PT. Tripatra Engineers and Constructors
+                </div>
+
+                <div class="timeline-description">
+
+                    Managed RFID and fingerprint attendance systems,
+                    IT network installations, internet connections,
+                    hardware setup and employee ID badges.
+
+                </div>
+
+            </div>
+
+
+            <!-- 8 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    FEB 2019 — JUN 2019
+                </div>
+
+                <div class="timeline-title">
+                    Project Engineer
+                </div>
+
+                <div class="timeline-company">
+                    PT. Jaya Teknik Indonesia
+                </div>
+
+                <div class="timeline-description">
+
+                    Handled installation and maintenance of
+                    264 cameras at Soekarno-Hatta Airport
+                    Terminal 3.
+
+                </div>
+
+            </div>
+
+
+            <!-- 9 -->
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    NOV 2014 — JAN 2019
+                </div>
+
+                <div class="timeline-title">
+                    SCADA Operator
+                </div>
+
+                <div class="timeline-company">
+                    PT. Angkasa Pura Support / PT. Jaya Teknik Indonesia
+                </div>
+
+                <div class="timeline-description">
+
+                    Operated and monitored baggage handling systems
+                    at Sultan Aji Muhammad Sulaiman Airport and
+                    prepared operational reports for Angkasa Pura.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <div class="section-label">
+                Selected Work
+            </div>
+
+            <h2 class="section-title">
+                Projects that solve
+                real business problems.
+            </h2>
+
+            <p class="section-description">
+
+                A selection of projects and responsibilities
+                demonstrating my experience in ERP, IT systems
+                and operational technology.
+
+            </p>
+
+        </div>
+
+
+        <div class="project-grid">
+
+
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    01 / ERP
+                </div>
+
+                <h3>
+                    Odoo ERP Management
+                </h3>
+
+                <p>
+
+                    Managed and supported Odoo ERP operations,
+                    including configuration, customization,
+                    user support, training and system integration.
+
+                </p>
+
+                <div class="project-result">
+
+                    <strong>Focus:</strong>
+                    ERP Management · Configuration · User Support · Reporting
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    02 / ERP
+                </div>
+
+                <h3>
+                    Odoo System Integration
+                </h3>
+
+                <p>
+
+                    Worked on integrating Odoo with third-party
+                    applications to improve workflows and
+                    information exchange.
+
+                </p>
+
+                <div class="project-result">
+
+                    <strong>Focus:</strong>
+                    Integration · Data Flow · Process Optimization
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    03 / INFRASTRUCTURE
+                </div>
+
+                <h3>
+                    Airport CCTV Project
+                </h3>
+
+                <p>
+
+                    Handled installation and maintenance of
+                    264 new cameras at Soekarno-Hatta Airport
+                    Terminal 3.
+
+                </p>
+
+                <div class="project-result">
+
+                    <strong>Scale:</strong>
+                    264 Cameras · Installation · Maintenance
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    04 / OPERATIONS
+                </div>
+
+                <h3>
+                    SCADA & Baggage Handling
+                </h3>
+
+                <p>
+
+                    Operated and monitored airport baggage
+                    handling systems and delivered regular
+                    operational reporting.
+
+                </p>
+
+                <div class="project-result">
+
+                    <strong>Focus:</strong>
+                    SCADA · Monitoring · Operational Reporting
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    05 / RFID
+                </div>
+
+                <h3>
+                    RFID Attendance System
+                </h3>
+
+                <p>
+
+                    Managed RFID and fingerprint attendance
+                    systems for employees and subcontractors,
+                    including device and ID badge support.
+
+                </p>
+
+                <div class="project-result">
+
+                    <strong>Focus:</strong>
+                    RFID · Attendance · Hardware · Administration
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    06 / IT
+                </div>
+
+                <h3>
+                    IT Infrastructure Support
+                </h3>
+
+                <p>
+
+                    Supported LAN, WiFi, internet connectivity,
+                    computer systems, software, backups,
+                    servers and IT security.
+
+                </p>
+
+                <div class="project-result">
+
+                    <strong>Focus:</strong>
+                    Network · Infrastructure · Security · Support
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section id="skills">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <div class="section-label">
+                Expertise
+            </div>
+
+            <h2 class="section-title">
+                Technical Skills
+            </h2>
+
+            <p class="section-description">
+
+                A combination of enterprise applications,
+                infrastructure, networking and technical
+                troubleshooting.
+
+            </p>
+
+        </div>
+
+
+        <div class="skills-grid">
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-icon">
+                    ◈
+                </div>
+
+                <h3>
+                    ERP & Odoo
+                </h3>
+
+                <p>
+
+                    Odoo ERP management, configuration,
+                    customization, reporting, user support,
+                    training and system integration.
+
+                </p>
+
+            </div>
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-icon">
+                    ◉
+                </div>
+
+                <h3>
+                    IT Infrastructure
+                </h3>
+
+                <p>
+
+                    Computer systems, Windows,
+                    LAN/WAN, internet connectivity,
+                    hardware and software support.
+
+                </p>
+
+            </div>
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-icon">
+                    ◇
+                </div>
+
+                <h3>
+                    Networking
+                </h3>
+
+                <p>
+
+                    LAN/WAN, IP CCTV, WiFi,
+                    network troubleshooting and
+                    infrastructure support.
+
+                </p>
+
+            </div>
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-icon">
+                    #
+                </div>
+
+                <h3>
+                    Database & Reporting
+                </h3>
+
+                <p>
+
+                    MySQL, database administration,
+                    operational reports and
+                    business information management.
+
+                </p>
+
+            </div>
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-icon">
+                    ⚙
+                </div>
+
+                <h3>
+                    System Integration
+                </h3>
+
+                <p>
+
+                    Connecting business applications
+                    and supporting data exchange
+                    between systems.
+
+                </p>
+
+            </div>
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-icon">
+                    ◌
+                </div>
+
+                <h3>
+                    SCADA & RFID
+                </h3>
+
+                <p>
+
+                    SCADA operation, baggage handling
+                    monitoring, RFID attendance systems
+                    and device administration.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ACHIEVEMENTS
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <div class="section-label">
+                Highlights
+            </div>
+
+            <h2 class="section-title">
+                Career Highlights
+            </h2>
+
+        </div>
+
+
+        <div class="achievement-grid">
+
+
+            <div class="achievement reveal">
+
+                <div class="achievement-icon">
+                    🚀
+                </div>
+
+                <h3>
+                    Odoo ERP Optimization
+                </h3>
+
+                <p>
+
+                    Successfully managed and optimized
+                    the Odoo ERP system at PT. JALA
+                    Akuakultur, supporting operational
+                    efficiency.
+
+                </p>
+
+            </div>
+
+
+            <div class="achievement reveal">
+
+                <div class="achievement-icon">
+                    📹
+                </div>
+
+                <h3>
+                    264 CCTV Cameras
+                </h3>
+
+                <p>
+
+                    Played a key role in installation and
+                    maintenance of 264 cameras at
+                    Soekarno-Hatta Airport Terminal 3.
+
+                </p>
+
+            </div>
+
+
+            <div class="achievement reveal">
+
+                <div class="achievement-icon">
+                    🏦
+                </div>
+
+                <h3>
+                    Maybank IT Support
+                </h3>
+
+                <p>
+
+                    Supported network and system operations
+                    across multiple Maybank Indonesia
+                    branches.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EDUCATION
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="education-card reveal">
+
+            <div>
+
+                <div class="education-label">
+                    Education
+                </div>
+
+                <h3>
+                    Bachelor of Computer Science
+                </h3>
+
+                <p>
+                    Universitas Mulia Balikpapan
+                </p>
+
+            </div>
+
+            <div class="education-year">
+                2014 — 2019
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact" id="contact">
+
+    <div class="container">
+
+        <div class="contact-card reveal">
+
+            <div class="section-label">
+                Let's Connect
+            </div>
+
+            <h2>
+                Let's build better
+                systems together.
+            </h2>
+
+            <p>
+
+                I'm open to opportunities related to
+                ERP, Odoo Functional, IT Systems,
+                IT Infrastructure and technology-driven
+                business improvement.
+
+            </p>
+
+            <div class="contact-buttons">
+
+                <a
+                    href="mailto:abdulgafur955@gmail.com"
+                    class="btn btn-primary">
+
+                    ✉ Email Me
+                </a>
+
+                <a
+                    href="https://wa.me/6289690233685"
+                    target="_blank"
+                    class="btn btn-secondary">
+
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/abdulgafur-851504190"
+                    target="_blank"
+                    class="btn btn-secondary">
+
+                    LinkedIn ↗
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <div>
+            © <span id="year"></span> Abdul Gafur
+        </div>
+
+        <div>
+            ERP Executive · Odoo Functional · IT Professional
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    /* =========================
+       CURRENT YEAR
+    ========================== */
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+    /* =========================
+       DARK MODE
+    ========================== */
+
+    const themeBtn =
+        document.getElementById("themeBtn");
+
+    const savedTheme =
+        localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
     }
-  </script>
+
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+        const mode =
+            document.body.classList.contains("dark")
+                ? "dark"
+                : "light";
+
+        localStorage.setItem("theme", mode);
+
+    });
+
+
+    /* =========================
+       LANGUAGE BUTTON
+       Simple EN / ID toggle
+    ========================== */
+
+    const languageBtn =
+        document.getElementById("languageBtn");
+
+    let language = "EN";
+
+    languageBtn.addEventListener("click", () => {
+
+        language =
+            language === "EN"
+                ? "ID"
+                : "EN";
+
+        languageBtn.textContent =
+            language === "EN"
+                ? "ID"
+                : "EN";
+
+        if (language === "ID") {
+
+            alert(
+                "Versi Bahasa Indonesia dapat Anda aktifkan dengan mengganti konten teks pada HTML."
+            );
+
+        }
+
+    });
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================== */
+
+    const observer =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    document
+        .querySelectorAll(".reveal")
+        .forEach(element => {
+
+            observer.observe(element);
+
+        });
+
+
+    /* =========================
+       ACTIVE NAVIGATION
+    ========================== */
+
+    const sections =
+        document.querySelectorAll("section");
+
+    const navLinks =
+        document.querySelectorAll(".nav-links a");
+
+    window.addEventListener("scroll", () => {
+
+        let current = "";
+
+        sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop - 150;
+
+            if (
+                window.scrollY >= sectionTop
+            ) {
+                current =
+                    section.getAttribute("id");
+            }
+
+        });
+
+        navLinks.forEach(link => {
+
+            link.style.color = "";
+
+            if (
+                link.getAttribute("href") ===
+                "#" + current
+            ) {
+
+                link.style.color =
+                    "var(--primary)";
+
+            }
+
+        });
+
+    });
+
+</script>
+
 </body>
 </html>
